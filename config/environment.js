@@ -43,5 +43,13 @@ module.exports = function(environment) {
 
   }
 
+
+  ENV.contentSecurityPolicy = {
+    'img-src': "*",
+    // below is needed for preloadstore stuff to work:
+    'script-src': "'self' 'unsafe-inline'", 
+    'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com"
+  }
+
   return ENV;
 };
