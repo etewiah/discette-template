@@ -13,6 +13,7 @@ var app = new EmberApp({
 
 );
 
+app.import('vendor/preloadstore.js');
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //
