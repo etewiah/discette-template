@@ -2,10 +2,15 @@
   <div class='row'>
 
     <div class='topic-avatar'>
-      <div class="contents">
 
-
+			<div class="contents">
+          <a href="/users/Ed_Tee" classnames="trigger-user-card main-avatar" data-user-card="Ed_Tee"><img width="45" height="45"
+            {{bind-attr src="avatarUrl" }}             class="avatar" title="Ed_Tee"></a>
       </div>
+      <div class="poster-name pull-left">
+        {{ post.name post.user_name }}
+      </div>
+
     </div>
 
     <div class='topic-body'>
