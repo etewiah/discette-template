@@ -1,0 +1,25 @@
+<article {{bind-attr class=":boxed via_email" id="postElementId" data-post-id="id" data-user-id="user_id" }}>
+  <div class='row'>
+
+    <div class='topic-avatar'>
+      <div class="contents">
+
+
+      </div>
+    </div>
+
+    <div class='topic-body'>
+      <div class='topic-meta-data'>
+
+        <div class='post-info'>
+          <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number" }}>
+                    </a>
+            {{{ post.cooked }}}
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</article>

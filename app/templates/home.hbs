@@ -17,7 +17,7 @@
 
     {{#each topic in model }}
     <div class="section-topic-line">
-      {{#link-to 'home' }}
+      {{#link-to 'topic' topic.slug }}
       <div class="row section-topic-row">
         <h3 class="topic-list-title">
         {{ topic.title }}

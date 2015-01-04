@@ -18,4 +18,24 @@
 
   </div>
 
+
+
+  <div class="container posts">
+
+    <div class="row">
+      <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
+        <div class='posts-wrapper'>
+
+          {{#each item in model.post_stream.posts }}
+
+            {{post-details post=item }}
+
+          {{/each}}
+
+
+        </div>
+    </div>
+  </div>
+
+
 </div>
