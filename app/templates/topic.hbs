@@ -2,22 +2,16 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 style="">{{ model.title }}
-            <small class="pull-right topic-source-url"><a target="_blank" {{bind-attr href=topicUrl }} >
-        source url</a> </small>
-      </h4>
 
     </div>
     <ul class="list-group">
-      {{#each item in model.post_stream.posts }}
-      <li class="list-group-item">
-        {{{ item.cooked }}}
-      </li>
-      {{/each}}
+
     </ul>
 
   </div>
 
+      <h1 style="">{{ model.title }}
+      </h1>
 
 
   <div class="container posts">

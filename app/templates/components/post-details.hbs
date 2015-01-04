@@ -1,7 +1,8 @@
+<div class='topic-post'>
 <article {{bind-attr class=":boxed via_email" id="postElementId" data-post-id="id" data-user-id="user_id" }}>
   <div class='row'>
 
-    <div class='topic-avatar'>
+    <div class='topic-meta-data topic-avatar col-md-1'>
 
 			<div class="contents">
           <a href="/users/Ed_Tee" classnames="trigger-user-card main-avatar" data-user-card="Ed_Tee"><img width="45" height="45"
@@ -13,18 +14,28 @@
 
     </div>
 
+    <div class='col-md-10'>
     <div class='topic-body'>
-      <div class='topic-meta-data'>
+      <div class='bottom-round contents regular'>
 
         <div class='post-info'>
           <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number" }}>
                     </a>
-            {{{ post.cooked }}}
+        </div>
 
+        <div class="cooked">
+        	{{{ post.cooked }}}
         </div>
 
       </div>
     </div>
+    </div>
 
   </div>
 </article>
+
+
+</div>
+
+
+
