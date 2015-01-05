@@ -17,15 +17,25 @@
     </div>
   </div>
 
-
+  <div class="container">
+    
+    {{#if controller.isEditing}}
+    <div class="container">
+      {{summer-note height=200 btnSize=bs-sm content=model.draft focus=true header="Example"}}
+    </div>
     <div class="row">
-      <button class='btn btn-primary pull-right' style="" {{action 'replyToTopic' }} title="">
-        <i class="fa fa-plus"></i>Reply
+      <button class='btn btn-primary pull-right' style="" {{action 'processReplyToTopic' }} title="">
+        <i class="fa fa-plus"></i>Save
       </button>
     </div>
-
-  <div class="container">
-    {{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example"}}
+    {{else}}
+        <div class="row">
+          <button class='btn btn-primary pull-right' style="" {{action 'startReplyToTopic' }} title="">
+            <i class="fa fa-plus"></i>Reply
+          </button>
+        </div>
+    {{/if}}
   </div>
+
 
 </div>

@@ -2,7 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
-    replyToTopic: function(){
+    startReplyToTopic: function(){
+      this.controller.set('isEditing', true);
+    },
+    processReplyToTopic: function(){
+      this.controller.set('isEditing', false);
       debugger;
     }
   },
@@ -18,5 +22,6 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     // controller.set('model', model.get('data'));
     controller.set('model', model);
+    controller.set('isEditing', false);
   }
 });
