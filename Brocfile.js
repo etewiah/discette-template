@@ -3,15 +3,18 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
-    outputPaths: {
-      app: {
-        html: 'index.html'
+  'ember-cli-summernote': {
+    "importBootstrapCSS": true,
+    "importBootstrapJS": true,
+    "importFontawesomeCSS": true
+  },
+  outputPaths: {
+    app: {
+      html: 'index.html'
         // html: 'example_home.html,orig_index.html'
-      }
     }
   }
-
-);
+});
 
 app.import('vendor/preloadstore.js');
 

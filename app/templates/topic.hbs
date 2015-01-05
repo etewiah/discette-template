@@ -1,18 +1,7 @@
 <div class="topic-details">
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-
-    </div>
-    <ul class="list-group">
-
-    </ul>
-
-  </div>
-
-      <h1 style="">{{ model.title }}
-      </h1>
-
+  <h1 style="">{{ model.title }}
+  </h1>
 
   <div class="container posts">
 
@@ -21,15 +10,22 @@
         <div class='posts-wrapper'>
 
           {{#each item in model.post_stream.posts }}
-
             {{post-details post=item }}
-
           {{/each}}
-
 
         </div>
     </div>
   </div>
 
+
+    <div class="row">
+      <button class='btn btn-primary pull-right' style="" {{action 'replyToTopic' }} title="">
+        <i class="fa fa-plus"></i>Reply
+      </button>
+    </div>
+
+  <div class="container">
+    {{summer-note height=200 btnSize=bs-sm content=postContent focus=false header="Example"}}
+  </div>
 
 </div>

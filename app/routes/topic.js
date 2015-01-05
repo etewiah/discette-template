@@ -1,7 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
+  actions: {
+    replyToTopic: function(){
+      debugger;
+    }
+  },
   model: function(params) {
     // var topic = this.store.find('topic', params.id);
     var apiUrl = "/api/topics/3";
