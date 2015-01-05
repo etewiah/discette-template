@@ -6,7 +6,8 @@ export default Ember.Route.extend({
   	// if (PreloadStore.data.discette_topics) {
   	// 	return PreloadStore.data.discette_topics;
   	// }
-    var apiUrl = "/api/topics";
+    var apiUrl = "discette_topics.json";
+    // "/api/topics";
     var topics = $.getJSON(apiUrl).then(
       function(result) {
         return result.discette_topics;

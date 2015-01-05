@@ -9,7 +9,7 @@ Router.map(function() {
   this.route("home");
   // this.resource("topic", function() {});
   this.resource('topic', {
-    path: 'c/:id'
+    path: 'c/:id/:slug'
   }, function() {
 
     this.route('default', {

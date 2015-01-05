@@ -12,7 +12,8 @@ export default Ember.Route.extend({
   },
   model: function(params) {
     // var topic = this.store.find('topic', params.id);
-    var apiUrl = "/api/topics/3";
+    // var apiUrl = "/api/topics/3";
+    var apiUrl = "/t/" + params.slug + "/" + params.id + ".json";
     var topic = $.getJSON(apiUrl).then(
       function(detailedTopic) {
         return detailedTopic;
