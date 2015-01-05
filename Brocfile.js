@@ -16,7 +16,7 @@ var app = new EmberApp({
   }
 });
 
-app.import('vendor/preloadstore.js');
+// app.import('vendor/preloadstore.js');
 
 
 var bootstrapDir = app.bowerDirectory + '/bootstrap-sass-official/assets';
