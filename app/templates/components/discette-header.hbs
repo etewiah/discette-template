@@ -25,12 +25,25 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <button {{action "showSignUp"}} class='btn btn-primary btn-small sign-up-button navbar-btn'>
-          Sign Up
-        </button>
-        <button {{action "showLogin"}} class='btn btn-primary btn-small login-button navbar-btn'>
-          Log In
-        </button>
+        {{#if currentUser}}
+          <li class='current-user dropdown'>
+            <a class='icon'
+               data-dropdown="user-dropdown"
+               data-render="renderUserDropdown"
+               href="#"
+               title='me'
+               id="current-user">
+               <img width="32" height="32" {{bind-attr src="currentUser.avatarUrl" title="currentUser.username"}} class="avatar">
+            </a>
+          </li>
+          {{else}}
+          <button {{action "showSignUp"}} class='btn btn-primary btn-small sign-up-button navbar-btn'>
+            Sign Up
+          </button>
+          <button {{action "showLogin"}} class='btn btn-primary btn-small login-button navbar-btn'>
+            Log In
+          </button>
+        {{/if}}
       </ul>
     </div>
   </div>

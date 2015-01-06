@@ -24,7 +24,7 @@ var app = new EmberApp({
   }
 });
 
-// app.import('vendor/preloadstore.js');
+app.import('vendor/preloadstore.js');
 
 app.import('vendor/jquery.pagedown-bootstrap.combined.js');
 app.import('vendor/jquery.pagedown-bootstrap.css');

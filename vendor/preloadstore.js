@@ -1,6 +1,4 @@
 /**
-  Currently not in use for discettes
-
   @class PreloadStore
 **/
 window.PreloadStore = {
