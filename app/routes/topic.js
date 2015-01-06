@@ -18,7 +18,7 @@ export default Ember.Route.extend({
         data: {
           "api_key": apiKey,
           "api_username": apiUsername,
-          "cooked": draft,
+          "raw": draft,
           "topic_id": topic_id,
           "archetype": "regular",
           "category": category_id

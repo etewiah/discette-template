@@ -22,18 +22,18 @@ export default Ember.Component.extend({
     // this.$('.btn').addClass(_btnSize);
   },
   
-  // keyUp: function() {
-  //   this.doUpdate();
-  // },
+  keyUp: function() {
+    this.doUpdate();
+  },
 
-  // click: function() {
-  //   this.doUpdate();
-  // },
+  click: function() {
+    this.doUpdate();
+  },
 
-  // doUpdate: function() {
-  //   var content = this.$('.note-editable').html();
-  //   this.set('content', content);
-  // }
+  doUpdate: function() {
+    var content = this.$('.pgdn-textarea').val();
+    this.set('content', content);
+  }
 
 
 });
