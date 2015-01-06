@@ -22,26 +22,32 @@
 
     {{#if controller.isEditing}}
     <div class="row reply-row">
-      <div class='col-md-2'>
-        <h5>Your reply:</h5>
+      <div class='col-md-1'>
+        <h4>Reply:</h4>
       </div>
       <div class='col-md-9'>
-    <div class="pagedown-container bottom-round">
-      {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
-    </div>
-        
+        <div class="pagedown-container bottom-round">
+          {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
+        </div>
+      </div>
+      <div class='col-md-1'>
+      <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'processReplyToTopic' }} title="">
+        Save
+      </button>
+      <button class='btn' style="" {{action 'cancelReplyToTopic' }} title="">
+        Cancel
+      </button>
       </div>
     </div>
     <div class="row">
-      <button class='btn btn-primary pull-right' style="" {{action 'processReplyToTopic' }} title="">
-        <i class="fa fa-plus"></i>Save
-      </button>
     </div>
     {{else}}
-        <div class="row">
-          <button class='btn btn-primary pull-right' style="" {{action 'startReplyToTopic' }} title="">
-            <i class="fa fa-plus"></i>Reply
-          </button>
+        <div class="row reply-btn-row">
+          <div class='col-md-11'>        
+            <button class='btn btn-primary pull-right' style="" {{action 'startReplyToTopic' }} title="">
+              <i class="fa fa-plus"></i>Reply
+            </button>
+          </div>
         </div>
     {{/if}}
   </div>

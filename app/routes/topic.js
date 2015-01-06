@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
+    cancelReplyToTopic: function() {
+      this.controller.set('isEditing', false);
+    },
     startReplyToTopic: function() {
       this.controller.set('isEditing', true);
     },
