@@ -6,6 +6,11 @@ export default Ember.Component.extend({
   actions: {
     showSignUp: function() {
       debugger;
+    },
+    logout: function() {
+      debugger;
+      // Discourse.logout();
+      return false;
     }
   },
   currentUser: function() {
@@ -30,41 +35,41 @@ export default Ember.Component.extend({
 
   showDropdown: function($target) {
     var self = this;
-// debugger;
-    if(!this.get("renderDropdowns")){
+    // debugger;
+    if (!this.get("renderDropdowns")) {
       this.set("renderDropdowns", true);
-      Em.run.next(function(){
+      Em.run.next(function() {
         self.showDropdown($target);
       });
       return;
     }
 
     var elementId = $target.data('dropdown') || $target.data('notifications'),
-        $dropdown = $("#" + elementId),
-        $li = $target.closest('li'),
-        $ul = $target.closest('ul'),
-        $html = $('html'),
-        $header = $('header'),
-        replyZIndex = parseInt($('#reply-control').css('z-index'), 10);
+      $dropdown = $("#" + elementId),
+      $li = $target.closest('li'),
+      $ul = $target.closest('ul'),
+      $html = $('html'),
+      $header = $('header'),
+      replyZIndex = parseInt($('#reply-control').css('z-index'), 10);
 
 
     originalZIndex = originalZIndex || $('header').css('z-index');
 
-    if(replyZIndex > 0) {
+    if (replyZIndex > 0) {
       $header.css("z-index", replyZIndex + 1);
     }
 
     var controller = self.get('controller');
-    if(controller && !controller.isDestroyed){
+    if (controller && !controller.isDestroyed) {
       controller.set('visibleDropdown', elementId);
     }
     // we need to ensure we are rendered,
     //  this optimises the speed of the initial render
     var render = $target.data('render');
-    if(render){
-      if(!this.get(render)){
+    if (render) {
+      if (!this.get(render)) {
         this.set(render, true);
-        Em.run.next(this, function(){
+        Em.run.next(this, function() {
           this.showDropdown.apply(self, [$target]);
         });
         return;
@@ -77,14 +82,15 @@ export default Ember.Component.extend({
       $li.removeClass('active');
       $html.data('hide-dropdown', null);
       var controller = self.get('controller');
-      if(controller && !controller.isDestroyed){
+      if (controller && !controller.isDestroyed) {
         controller.set('visibleDropdown', null);
       }
       return $html.off('click.d-dropdown');
     };
-
     // if a dropdown is active and the user clicks on it, close it
-    if($li.hasClass('active')) { return hideDropdown(); }
+    if ($li.hasClass('active')) {
+      return hideDropdown();
+    }
     // otherwhise, mark it as active
     $li.addClass('active');
     // hide the other dropdowns
