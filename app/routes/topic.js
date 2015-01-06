@@ -12,14 +12,13 @@ export default Ember.Route.extend({
       var draft = this.controller.get('model.draft');
       var apiKey = this.get('settingsService.apiKey');
       var apiUsername = this.get('settingsService.apiUsername');
-      debugger;
 
       var create_post_endpoint = '/posts';
       var reply = $.ajax(create_post_endpoint, {
         data: {
           "api_key": apiKey,
           "api_username": apiUsername,
-          "raw": "Need to see how a post is added 222..",
+          "cooked": draft,
           "topic_id": topic_id,
           "archetype": "regular",
           "category": category_id
@@ -29,11 +28,13 @@ export default Ember.Route.extend({
       });
       var that = this;
       reply.then(function(result) {
-        console.log(that);
-        debugger;
+        // console.log(that);
+        var postStream = that.controller.get('model.post_stream');
+        postStream.posts.pushObject(result);
       },
       function(error){
-        debugger;
+        //TODO - handle errors;
+        // debugger;
       });
 
     }
