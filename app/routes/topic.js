@@ -10,13 +10,15 @@ export default Ember.Route.extend({
       var topic_id = this.controller.get('model.id');
       var category_id = this.controller.get('model.category_id');
       var draft = this.controller.get('model.draft');
+      var apiKey = this.get('settingsService.apiKey');
+      var apiUsername = this.get('settingsService.apiUsername');
       debugger;
 
       var create_post_endpoint = '/posts';
       var reply = $.ajax(create_post_endpoint, {
         data: {
-          "api_key": "secret",
-          "api_username": "LarrisaW",
+          "api_key": apiKey,
+          "api_username": apiUsername,
           "raw": "Need to see how a post is added 222..",
           "topic_id": topic_id,
           "archetype": "regular",
