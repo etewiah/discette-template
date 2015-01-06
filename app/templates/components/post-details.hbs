@@ -5,8 +5,9 @@
     <div class='topic-meta-data topic-avatar col-md-1'>
 
 			<div class="contents">
-          <a href="/users/Ed_Tee" classnames="trigger-user-card main-avatar" data-user-card="Ed_Tee"><img width="45" height="45"
-            {{bind-attr src="avatarUrl" }}             class="avatar" title="Ed_Tee"></a>
+          <a    {{bind-attr  href="usernameUrl"  data-user-card="post.username" }}    classnames="trigger-user-card main-avatar" >
+            <img width="45" height="45" {{bind-attr src="avatarUrl" title="post.username"}} class="avatar">
+          </a>
       </div>
       <div class="poster-name pull-left">
         {{ post.name post.user_name }}
