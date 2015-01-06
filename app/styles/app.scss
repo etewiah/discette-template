@@ -6,5 +6,62 @@ html, body {
 
 /*below fixes minor problem with summernote toolbar */
 .btn-toolbar {
- margin-left: 0px; 
+  margin-left: 0px;
+}
+
+
+.wmd-preview {
+	margin: 1%;
+}
+
+.reply-row {
+	margin-top: 80px;
+}
+
+.pagedown-container {
+  position: relative;
+  border: 1px solid #b9b9b9;
+  padding: 2%;
+  /*from bottom-round style:*/
+    /*overflow: hidden;*/
+  background-clip: padding-box;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+  /*to make up for btstrp col margin:*/
+  margin: -15px;
+}
+.pagedown-container .cooked > *:first-child {
+  margin-top: 0px !important;
+}
+.pagedown-container .cooked > blockquote *:first-child {
+  margin-top: 0px !important;
+}
+.pagedown-container .cooked h1, .pagedown-container .cooked h2, .pagedown-container .cooked h3, .pagedown-container .cooked h4, .pagedown-container .cooked h5, .pagedown-container .cooked h6 {
+  margin: 20px 0 10px;
+}
+.pagedown-container:before, .pagedown-container:after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: "";
+  border-style: solid;
+  border-color: transparent;
+  pointer-events: none;
+}
+.pagedown-container:before {
+  top: 12px;
+  left: -9px;
+  border-width: 10px 10px 10px 0;
+  border-right-color: #b9b9b9;
+}
+.pagedown-container:after {
+  top: 13px;
+  left: -8px;
+  border-width: 9px 9px 9px 0;
+  border-right-color: white;
+}
+
+
+.pagedown-container .bottom-round {
+
 }

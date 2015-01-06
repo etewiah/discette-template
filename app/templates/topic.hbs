@@ -19,13 +19,18 @@
 
   <div class="container">
     
-    <textarea id="reply-editor"  class="form-control" rows="10">
-    </textarea>
-    <div  ></div>
 
     {{#if controller.isEditing}}
-    <div class="container">
-      {{summer-note height=200 btnSize=bs-sm content=model.draft focus=true header="Example"}}
+    <div class="row reply-row">
+      <div class='col-md-1'>
+        <h3>Your reply:</h3>
+      </div>
+      <div class='col-md-10'>
+    <div class="pagedown-container bottom-round">
+      {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
+    </div>
+        
+      </div>
     </div>
     <div class="row">
       <button class='btn btn-primary pull-right' style="" {{action 'processReplyToTopic' }} title="">
