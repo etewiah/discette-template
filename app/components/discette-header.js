@@ -5,10 +5,14 @@ var originalZIndex;
 export default Ember.Component.extend({
   actions: {
     showSignUp: function() {
-      debugger;
+      // this.controllerFor('modal/add_site').set('model', this.controller.model);
+      this.sendAction('openModal', 'modal/sign_up');
+    },
+    showLogIn: function() {
+      // this.controllerFor('modal/add_site').set('model', this.controller.model);
+      this.sendAction('openModal', 'modal/log_in');
     },
     logout: function() {
-      debugger;
       // Discourse.logout();
       return false;
     }
@@ -35,7 +39,6 @@ export default Ember.Component.extend({
 
   showDropdown: function($target) {
     var self = this;
-    // debugger;
     if (!this.get("renderDropdowns")) {
       this.set("renderDropdowns", true);
       Em.run.next(function() {
