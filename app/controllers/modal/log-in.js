@@ -49,7 +49,7 @@ LogInController = ModalController.extend({
 
       }, function() {
         // Failed to login
-        self.flash(I18n.t('login.error'), 'error');
+        self.flash('Sorry, there has been an error', 'error');
         self.set('loggingIn', false);
       });
 
@@ -124,11 +124,13 @@ LogInController = ModalController.extend({
     }
     // Reload the page if we're authenticated
     if (options.authenticated) {
-      if (window.location.pathname === Discourse.getURL('/login')) {
-        window.location.pathname = Discourse.getURL('/');
-      } else {
-        window.location.reload();
-      }
+      // TODO - implement logic like below:
+      // if (window.location.pathname === Discourse.getURL('/login')) {
+      //   window.location.pathname = Discourse.getURL('/');
+      // } else {
+      //   window.location.reload();
+      // }
+      window.location.pathname = '/';
       return;
     }
 

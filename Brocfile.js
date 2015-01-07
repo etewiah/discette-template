@@ -28,6 +28,7 @@ app.import('vendor/preloadstore.js');
 
 app.import('vendor/jquery.pagedown-bootstrap.combined.js');
 app.import('vendor/jquery.pagedown-bootstrap.css');
+app.import('vendor/jquery.cookie.js');
 
 
 var bootstrapDir = app.bowerDirectory + '/bootstrap-sass-official/assets';
