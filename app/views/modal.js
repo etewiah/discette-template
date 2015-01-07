@@ -25,6 +25,16 @@ ModalView = Ember.View.extend({
     });
   },
 
+  flashMessageChanged: function() {
+    var flashMessage = this.get('controller.flashMessage');
+    if (flashMessage) {
+      var messageClass = flashMessage.get('messageClass') || 'success';
+      var $alert = $('#modal-alert').hide().removeClass('alert-error', 'alert-success');
+      $alert.addClass("alert alert-" + messageClass).html(flashMessage.get('message'));
+      $alert.fadeIn();
+    }
+  }.observes('controller.flashMessage')
+
 
   //   _setupModal: function() {
   //   var self = this,
