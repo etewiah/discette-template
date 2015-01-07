@@ -36,5 +36,8 @@
     "express": "^4.8.5",
     "glob": "^4.0.5",
     "morgan": "^1.5.1"
+  },
+  "dependencies": {
+    "rails-csrf": "^1.0.1"
   }
 }

@@ -3,6 +3,10 @@ import Ember from 'ember';
 var ApplicationRoute;
 
 ApplicationRoute = Ember.Route.extend({
+  beforeModel: function() {
+// debugger;
+    return this.csrf.fetchToken();
+  },
   actions: {
     openModal: function(modal) {
       return this.render(modal, {
