@@ -5,8 +5,10 @@ var originalZIndex;
 export default Ember.Component.extend({
   actions: {
     showSignUp: function() {
-      // this.controllerFor('modal/add_site').set('model', this.controller.model);
-      this.sendAction('openModal', 'modal/sign_up');
+      //setting this cookie ensures I will be redirected here after signup
+      $.cookie('destination_url', location.href );
+      var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
+      window.location = rootDomainBaseUrl + "/signup";
     },
     showLogIn: function() {
       // this.controllerFor('modal/add_site').set('model', this.controller.model);
