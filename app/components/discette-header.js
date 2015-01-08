@@ -18,6 +18,9 @@ export default Ember.Component.extend({
       // Discourse implements this in the user model - I should do that myself too
       // var discourseUserClass = this;
       var userName = this.get('currentUser.username');
+
+      var $dropdown = $("#user-dropdown");
+      $dropdown.fadeOut();
       // Discourse.User.currentProp('username')
       return $.ajax("/session/" + userName + ".json", {
         type: 'DELETE'
@@ -31,7 +34,7 @@ export default Ember.Component.extend({
   signedIn: function() {
     if (this.get('currentUser.username')) {
       return true;
-    } else{
+    } else {
       return false;
     };
     // var userJson = PreloadStore.get('currentUser');
@@ -42,15 +45,22 @@ export default Ember.Component.extend({
     // }
     // return null;
   }.property('currentUser'),
+
+  willDestroyElement: function() {
+    // $(window).unbind('scroll.discourse-dock');
+    // $(document).unbind('touchmove.discourse-dock');
+    // this.$('a.unread-private-messages, a.unread-notifications, a[data-notifications]').off('click.notifications');
+    this.$('a[data-dropdown]').off('click.dropdown');
+  },
+
   didInsertElement: function() {
-
     var self = this;
-
     this.$('a[data-dropdown]').on('click.dropdown', function(e) {
       self.showDropdown.apply(self, [$(e.currentTarget)]);
       return false;
     });
   },
+
   renderDropdowns: false,
 
   showDropdown: function($target) {
