@@ -21,5 +21,13 @@
     <script src="assets/discette.js"></script>
 
     {{content-for 'body-footer'}}
+
+    <!-- below is only loaded when user is not logged in -->
+      <form id='hidden-login-form' method="post" action="<%=login_path%>" style="display: none;">
+        <input name="username" type="text"     id="signin_username">
+        <input name="password" type="password" id="signin_password">
+        <input name="redirect" type="hidden">
+        <input type="submit" id="signin-button" value="<%= t 'log_in' %>">
+      </form>
   </body>
 </html>

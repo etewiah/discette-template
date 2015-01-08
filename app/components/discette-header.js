@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   actions: {
     showSignUp: function() {
       //setting this cookie ensures I will be redirected here after signup
-      $.cookie('destination_url', location.href );
+      $.cookie('destination_url', location.href);
       var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
       window.location = rootDomainBaseUrl + "/signup";
     },
@@ -15,19 +15,33 @@ export default Ember.Component.extend({
       this.sendAction('openModal', 'modal/log_in');
     },
     logout: function() {
-      // Discourse.logout();
-      return false;
+      // Discourse implements this in the user model - I should do that myself too
+      // var discourseUserClass = this;
+      var userName = this.get('currentUser.username');
+      // Discourse.User.currentProp('username')
+      return $.ajax("/session/" + userName + ".json", {
+        type: 'DELETE'
+      }).then(function() {
+        this.set('currentUser', null);
+        // TODO: clear out user
+        // discourseUserClass.currentUser = null;
+      }.bind(this));
     }
   },
-  currentUser: function() {
-    var userJson = PreloadStore.get('currentUser');
-    if (userJson) {
-      userJson.avatarUrl = "http://klavado.com" + userJson.avatar_template.replace(/\{size\}/g, '32');
-      return userJson;
-      // return Discourse.User.create(userJson);
-    }
-    return null;
-  }.property(),
+  signedIn: function() {
+    if (this.get('currentUser.username')) {
+      return true;
+    } else{
+      return false;
+    };
+    // var userJson = PreloadStore.get('currentUser');
+    // if (userJson) {
+    //   userJson.avatarUrl = "http://klavado.com" + userJson.avatar_template.replace(/\{size\}/g, '32');
+    //   return userJson;
+    //   // return Discourse.User.create(userJson);
+    // }
+    // return null;
+  }.property('currentUser'),
   didInsertElement: function() {
 
     var self = this;
