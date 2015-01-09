@@ -6,7 +6,7 @@ html, body {
 }
 
 .alert-error{
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   color: red;
 }
 /*for input tips*/
@@ -35,6 +35,9 @@ html, body {
 	margin-top: 60px;
 }
 
+.pgdn-textarea {
+  min-height: 200px !important;
+}
 .pagedown-container {
   position: relative;
   border: 1px solid #b9b9b9;

@@ -11,7 +11,7 @@
           <form {{action "createNewTopic" on="submit" }}>
             <div style="width: 100%;" class="form-group" >
               <div>
-                <div style="" class="modal-label">
+                <div style="" class="">
                   <label for='topic-title'>
                     Title:
                   </label>
@@ -24,7 +24,7 @@
                 </div>
               </div>
 
-              <div class="instructions">
+              <div class="" style="margin-top: 15px;">
                 <div>
                   <label>
                     First Post:
@@ -32,8 +32,8 @@
                 </div>
               </div>
               <div class="input">
-                <div style="">
-                  {{textarea placeholder="" value=firstPost id="topic-details" autofocus="autofocus" class="form-control"}} 
+                <div class="">
+                  {{pagedown-bootstrap height=200 btnSize=bs-sm content=firstPost focus=true }}
                   {{input-tip validation=firstPostValidation}}
                 </div>
               </div>
