@@ -22,21 +22,23 @@
 
     {{#if controller.isEditing}}
     <div class="row reply-row">
-      <div class='col-md-1'>
+      <div class='col-md-1 hidden-sm'>
         <h4>Reply:</h4>
       </div>
-      <div class='col-md-9'>
+      <div class='col-md-9 col-sm-12'>
         <div class="pagedown-container bottom-round">
           {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
         </div>
       </div>
-      <div class='col-md-1'>
-      <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'processReplyToTopic' }} title="">
-        Save
-      </button>
-      <button class='btn' style="" {{action 'cancelReplyToTopic' }} title="">
-        Cancel
-      </button>
+      <div class='col-md-1 col-sm-12'>
+        <div style="margin-top:3%">
+          <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'processReplyToTopic' }} title="">
+            Save
+          </button>
+          <button class='btn' style="" {{action 'cancelReplyToTopic' }} title="">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
     <div class="row">

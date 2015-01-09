@@ -20,22 +20,19 @@
       {{#link-to 'topic' topic.id topic.slug }}
       <div class="section-topic-row">
         <h3 class="topic-list-title">
-        {{ topic.title }}
-      </h3>
+          {{ topic.title }}
+        <small class="pull-right">
+          <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
+          <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
+          <span class="badge-posts">last post: {{ago topic.last_posted_at }}</span>
+        </small>
+        </h3>
         <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
 
       </div>
 
 
       <div style="margin-left: 1%;">
-        {{#each location in topic.locations }}
-        <span class="badge-places">{{ location.title }} <i class="fa fa-map-marker"></i></span> {{/each}}
-
-        <div class="pull-right">
-          <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
-          <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
-          <span class="badge-posts">last post: {{ago topic.last_posted_at }}</span>
-        </div>
       </div>
 
       {{/link-to}}
