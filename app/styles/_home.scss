@@ -1,0 +1,30 @@
+.home-title-row {
+  text-align: center;
+}
+.section-topic-row {
+  min-height: 50px;
+}
+.section-topic-line a:hover {
+  text-decoration: none;
+}
+.section-topic-line a {
+  color: black;
+}
+.section-topic-line {
+  padding: 5px 15px 0px 15px;
+  background-color: #eeeeee;
+  margin-top: 5px;
+  margin-bottom: 1%;
+  padding-bottom: 2%;
+}
+.section-topic-line:hover {
+  background-color: #aeffd3;
+  cursor: pointer;
+  cursor: hand;
+}
+.topic-list-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  /*green:*/
+  color: #00c172;
+}

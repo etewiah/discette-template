@@ -8,7 +8,7 @@
         <i class="fa fa-plus"></i>New Conversation
       </button>
     </div>
-    <div class="row">
+    <div class="home-title-row row">
       <h2 id="title">Conversations in this discourse section</h2>
 
     </div>
@@ -18,7 +18,7 @@
     {{#each topic in model }}
     <div class="section-topic-line">
       {{#link-to 'topic' topic.id topic.slug }}
-      <div class="row section-topic-row">
+      <div class="section-topic-row">
         <h3 class="topic-list-title">
         {{ topic.title }}
       </h3>
@@ -34,7 +34,7 @@
         <div class="pull-right">
           <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
           <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
-          <span class="badge-posts">last post on: {{ topic.last_posted_at }}</span>
+          <span class="badge-posts">last post: {{ago topic.last_posted_at }}</span>
         </div>
       </div>
 
