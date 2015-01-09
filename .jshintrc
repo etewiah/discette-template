@@ -4,7 +4,9 @@
     "window",
     "-Promise",
     "$",
-    "PreloadStore"
+    "PreloadStore",
+    "Ember",
+    "Em"
   ],
   "browser": true,
   "boss": true,

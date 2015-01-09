@@ -38,6 +38,7 @@
     "morgan": "^1.5.1"
   },
   "dependencies": {
+    "ember-moment": "^1.0.0",
     "rails-csrf": "^1.0.1"
   }
 }

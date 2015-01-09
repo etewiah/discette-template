@@ -19,7 +19,9 @@
     <div class='topic-body'>
       <div class='bottom-round contents regular'>
 
-        <div class='post-info'>
+        <div class='post-info pull-right'>
+          <span class="relative-date" {{bind-attr title="longCreatedAt"}} title="January 7, 2015 3:13am" data-time="1420596816564" data-format="tiny">{{ago post.created_at }} </span>
+          {{!-- TODO: enable bellow --}}
           <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number" }}>
                     </a>
         </div>
