@@ -26,8 +26,7 @@ export default Ember.Component.extend({
         type: 'DELETE'
       }).then(function() {
         this.set('currentUser', null);
-        // TODO: clear out user
-        // discourseUserClass.currentUser = null;
+        // window.location = location.href;
       }.bind(this));
     }
   },

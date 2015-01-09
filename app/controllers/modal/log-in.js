@@ -21,29 +21,30 @@ LogInController = ModalController.extend({
       }).then(function (result) {
         // Successful login
         if (result.error) {
-          self.set('loggingIn', false);
-          if( result.reason === 'not_activated' ) {
-            self.send('showNotActivated', {
-              username: self.get('loginName'),
-              sentTo: result.sent_to_email,
-              currentEmail: result.current_email
-            });
-          }
+          // self.set('loggingIn', false);
+          // if( result.reason === 'not_activated' ) {
+          //   self.send('showNotActivated', {
+          //     username: self.get('loginName'),
+          //     sentTo: result.sent_to_email,
+          //     currentEmail: result.current_email
+          //   });
+          // }
           self.flash(result.error, 'error');
         } else {
-          self.set('loggedIn', true);
+          // self.set('loggedIn', true);
           // Trigger the browser's password manager using the hidden static login form:
           var $hidden_login_form = $('#hidden-login-form');
-          var destinationUrl = $.cookie('destination_url');
+          // var destinationUrl = $.cookie('destination_url');
           $hidden_login_form.find('input[name=username]').val(self.get('loginName'));
           $hidden_login_form.find('input[name=password]').val(self.get('loginPassword'));
-          if (self.get('loginRequired') && destinationUrl) {
-            // redirect client to the original URL
-            $.cookie('destination_url', null);
-            $hidden_login_form.find('input[name=redirect]').val(destinationUrl);
-          } else {
-            $hidden_login_form.find('input[name=redirect]').val(window.location.href);
-          }
+          // if (self.get('loginRequired') && destinationUrl) {
+          //   // redirect client to the original URL
+          //   $.cookie('destination_url', null);
+          //   $hidden_login_form.find('input[name=redirect]').val(destinationUrl);
+          // } else {
+          //   $hidden_login_form.find('input[name=redirect]').val(window.location.href);
+          // }
+          $hidden_login_form.find('input[name=redirect]').val(window.location.href);
           $hidden_login_form.submit();
         }
 
