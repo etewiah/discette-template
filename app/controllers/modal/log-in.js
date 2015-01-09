@@ -56,30 +56,32 @@ LogInController = ModalController.extend({
       return false;
     },
 
-    externalLogin: function(loginMethod){
-      var name = loginMethod.get("name");
-      var customLogin = loginMethod.get("customLogin");
 
-      if(customLogin){
-        customLogin();
-      } else {
-        this.set('authenticate', name);
-        var left = this.get('lastX') - 400;
-        var top = this.get('lastY') - 200;
+// TODO - implement below:
+    // externalLogin: function(loginMethod){
+    //   var name = loginMethod.get("name");
+    //   var customLogin = loginMethod.get("customLogin");
 
-        var height = loginMethod.get("frameHeight") || 400;
-        var width = loginMethod.get("frameWidth") || 800;
-        var w = window.open(Discourse.getURL("/auth/" + name), "_blank",
-            "menubar=no,status=no,height=" + height + ",width=" + width +  ",left=" + left + ",top=" + top);
-        var self = this;
-        var timer = setInterval(function() {
-          if(!w || w.closed) {
-            clearInterval(timer);
-            self.set('authenticate', null);
-          }
-        }, 1000);
-      }
-    },
+    //   if(customLogin){
+    //     customLogin();
+    //   } else {
+    //     this.set('authenticate', name);
+    //     var left = this.get('lastX') - 400;
+    //     var top = this.get('lastY') - 200;
+
+    //     var height = loginMethod.get("frameHeight") || 400;
+    //     var width = loginMethod.get("frameWidth") || 800;
+    //     var w = window.open(Discourse.getURL("/auth/" + name), "_blank",
+    //         "menubar=no,status=no,height=" + height + ",width=" + width +  ",left=" + left + ",top=" + top);
+    //     var self = this;
+    //     var timer = setInterval(function() {
+    //       if(!w || w.closed) {
+    //         clearInterval(timer);
+    //         self.set('authenticate', null);
+    //       }
+    //     }, 1000);
+    //   }
+    // },
 
     createAccount: function() {
       var createAccountController = this.get('controllers.createAccount');

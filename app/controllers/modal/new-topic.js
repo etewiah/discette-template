@@ -10,6 +10,8 @@ export default ModalController.extend({
   //   }
   //   this.set('geo', defaultGeo);
   // },
+  firstPost: "",
+  topicTitle: "",
   readyToAdd: function() {
     if (Ember.isBlank(this.get('topicTitle'))) {
       return false;
@@ -18,51 +20,51 @@ export default ModalController.extend({
     }
   }.property('topicTitle'),
 
-  detailsValidation: function() {
+  firstPostValidation: function() {
     if (!this.get('validate')) {
       return;
     };
-    if (this.get('serverError')) return Discourse.InputValidation.create({
+    if (this.get('serverError')) return Ember.Object.create({
       failed: true,
       reason: this.get('serverError')
 
     });
-    if (this.blank('topicDetails')) return Discourse.InputValidation.create({
+    if (Ember.empty('firstPost')) return Ember.Object.create({
       failed: true,
       reason: "Please enter a description."
     });
     // If too short
-    if (this.get('topicDetails').length < 10) {
-      return Discourse.InputValidation.create({
+    if (this.get('firstPost').length < 10) {
+      return Ember.Object.create({
         failed: true,
         reason: "Has to be at least 10 characters long."
       });
     }
 
     // Looks good!
-    return Discourse.InputValidation.create({
+    return Ember.Object.create({
       ok: true,
       reason: "Ok"
     });
-  }.property('validate', 'topicDetails', 'serverError'),
+  }.property('validate', 'firstPost', 'serverError'),
   titleValidation: function() {
     if (!this.get('validate')) {
       return;
     };
-    if (this.blank('topicTitle')) return Discourse.InputValidation.create({
+    if (Ember.empty('topicTitle')) return Ember.Object.create({
       failed: true,
       reason: "Please enter a title."
     });
     // If too short
     if (this.get('topicTitle').length < 5) {
-      return Discourse.InputValidation.create({
+      return Ember.Object.create({
         failed: true,
         reason: "Title has to be at least 5 characters long."
       });
     }
 
     // Looks good!
-    return Discourse.InputValidation.create({
+    return Ember.Object.create({
       ok: true,
       reason: "Ok"
     });
@@ -73,12 +75,12 @@ export default ModalController.extend({
     //   debugger;
     // },
     createNewTopic: function() {
-      // if (this.get('topicTitle').length < 5 || this.get('topicDetails').length < 10) {
-      //   this.set('validate', true);
-      //   return;
-      // }
+      if (this.get('topicTitle').length < 5 || this.get('firstPost').length < 10) {
+        this.set('validate', true);
+        return;
+      }
 
-      var firstPost = this.get('topicDetails'),
+      var firstPost = this.get('firstPost'),
         title = this.get('topicTitle'),
         categoryId = this.get('controllers.home.model.firstObject.category_id');
 
@@ -101,73 +103,15 @@ export default ModalController.extend({
       });
       var self = this;
       firstPost.then(function(result) {
-      	debugger;
-          console.log(self);
           self.send('closeModal')
           self.transitionToRoute('topic', result.topic_id, result.topic_slug );
         },
         function(error) {
-          //TODO - handle errors;
-          debugger;
+          // debugger;
           self.set('serverError', error.responseJSON.errors[0]);
-	        self.set('validate', true);
+          self.flash(error.responseJSON.errors[0], 'error');
+	        self.set('validate', false);
         });
-
-
-
-      // // opts.action = "CREATE_TOPIC";
-      // var composerModel = Discourse.Composer.create();
-      // composerModel.open(opts);
-      // // setting below ensures composerModel sets geo object on server after creation..
-      // // composerModel.set('geo', this.get('model.currentCitySelection'));
-      // // var st = composerModel.createPost()
-      // // composerModel.save will call createPost on itself..
-      // var self = this;
-      // return composerModel.save({
-      //   imageSizes: {},
-      //   editReason: null
-      // }).then(function(post_result) {
-      //   var geo = self.get('geo') || {
-      //     bounds_value: "china"
-      //   };
-
-      //   var set_geo_endpoint = '/location_posts/set_geo';
-      //   var map_topic = Discourse.ajax(set_geo_endpoint, {
-      //     data: {
-      //       geo: geo,
-      //       post_id: post_result.post.id,
-      //       topic_id: post_result.post.topic_id
-      //     },
-      //     method: 'POST'
-
-      //   });
-      //   map_topic.then(function(set_geo_result) {
-      //     // because a new category might have been created based on the location, I need to add it to
-      //     // the odd categoriesById collections that discourse keeps client side
-      //     var topicCategory = Discourse.Category.create(set_geo_result.category);
-      //     // var categoriesById = Discourse.Site.currentProp('categoriesById');
-      //     // categoriesById[topicCategory.id] = topicCategory;
-
-      //     //       return Discourse.Category.list().findProperty('id', categoryId);
-      //     //  need to do below to ensure the above line in topic model works to retrieve category
-      //     var sortedCategories = Discourse.Site.currentProp('sortedCategories');
-      //     sortedCategories.pushObject(topicCategory);
-
-      //     var chattyMapUrl = "/maps/" + post_result.post.get('topic_slug');
-      //     Discourse.URL.routeTo(chattyMapUrl);
-
-      //     // Discourse.URL.routeTo(post_result.post.get('url'));
-
-      //   });
-      //   // return map_topic;
-
-
-      //   self.send('closeModal');
-
-      // }, function(error) {
-      //   self.set('serverError', error);
-      //   self.set('validate', true);
-      // });
 
     }
   }

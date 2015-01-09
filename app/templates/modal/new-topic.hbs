@@ -20,7 +20,7 @@
               <div class="input">
                 <div style="">
                   {{input placeholder="" value=topicTitle id="topic-title" autofocus="autofocus" class="form-control"}} 
-
+                  {{input-tip validation=titleValidation}}
                 </div>
               </div>
 
@@ -33,8 +33,8 @@
               </div>
               <div class="input">
                 <div style="">
-                  {{textarea placeholder="" value=topicDetails id="topic-details" autofocus="autofocus" class="form-control"}} 
-
+                  {{textarea placeholder="" value=firstPost id="topic-details" autofocus="autofocus" class="form-control"}} 
+                  {{input-tip validation=firstPostValidation}}
                 </div>
               </div>
             </div>
