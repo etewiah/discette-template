@@ -1,4 +1,9 @@
-import Ember from 'ember';
+import ModalView from '../modal';
+var NewTopicModalView;
 
-export default Ember.View.extend({
+NewTopicModalView = ModalView.extend({
+
+
 });
+
+export default NewTopicModalView;

@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-lg">
+<div class="modal-dialog modal-sm">
   <div class="modal-content">
     <div class="modal-header">
       <button class="close" type="button" {{action cancel on="click"}}>x</button>
@@ -9,44 +9,48 @@
 <div id='modal-alert'></div>
 <div class="modal-body">
     <form id='login-form' method='post'>
-      <div>
-        <table>
-          <tr>
-            <td>
+      <div class="form-group" style="margin-bottom: 0px;">
+        <div>
+          <div>
+            <div>
               <label for='login-account-name'>Username&nbsp;</label>
-            </td>
-            <td>
-              {{input value=loginName placeholderKey="login.email_placeholder" id="login-account-name" autocorrect="off" autocapitalize="off" autofocus="autofocus"}}
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
+            </div>
+            <div>
+              {{input value=loginName placeholderKey="login.email_placeholder" id="login-account-name" 
+              class="form-control" autocorrect="off" autocapitalize="off" autofocus="autofocus"}}
+            </div>
+            <div></div>
+          </div>
+          <div>
+            <div>
                 <label for='login-account-password'>Password&nbsp;</label>
-            </td>
-            <td>
-                {{input value=loginPassword type="password" id="login-account-password" maxlength="200" capsLockOn=capsLockOn}} &nbsp;
-            </td>
-            <td>
+            </div>
+            <div>
+                {{input value=loginPassword type="password" id="login-account-password" maxlength="200" capsLockOn=capsLockOn class="form-control"}} &nbsp;
+            </div>
+            <div>
               <a id="forgot-password-link" {{action "showForgotPassword"}}></a>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><div {{bind-attr class=":caps-lock-warning capsLockOn::invisible"}}><i class="fa fa-exclamation-triangle"></i> 'login.caps_lock_warning'</div></td>
-            <td></td>
-          </tr>
-        </table>
+            </div>
+          </div>
+          <div style="display:none">
+            <div></div>
+            <div><div {{bind-attr class=":caps-lock-warning capsLockOn::invisible"}}><i class="fa fa-exclamation-triangle"></i> 'login.caps_lock_warning'</div></div>
+            <div></div>
+          </div>
+        </div>
       </div>
     </form>
   {{authMessage}}
   <div id='login-alert' {{bind-attr class="alertClass"}}>{{alert}}</div>
 </div>
 <div class="modal-footer">
+    <button class='btn' {{action 'closeModal' }} style="">
+        Cancel
+      </button>
     <button class="btn btn-large btn-primary"
       {{bind-attr disabled="loginDisabled"}}
       {{action "login"}}>
-        <i class="fa fa-unlock"></i>&nbsp;{{loginButtonText}}
+        <i class="fa fa-unlock"></i>&nbsp;Log In
     </button>
 
     {{#if showSignupLink}}
