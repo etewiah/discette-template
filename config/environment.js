@@ -21,6 +21,8 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.EmberENV.isDevelopment = true;
+    // set below to true to ensure csrf token is fetched in application route beforeModel hook:
+    ENV.EmberENV.isProxying = false;
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

@@ -4,8 +4,10 @@ var ApplicationRoute;
 
 ApplicationRoute = Ember.Route.extend({
   beforeModel: function() {
-// debugger;
-    return this.csrf.fetchToken();
+    // debugger;
+    if (EmberENV.isProxying) {
+      return this.csrf.fetchToken();
+    }
   },
   actions: {
     openModal: function(modal) {
