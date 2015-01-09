@@ -2,7 +2,7 @@ import ModalController from '../modal';
 // import Ember from 'ember';
 
 export default ModalController.extend({
-	needs: ['home'],
+  needs: ['home'],
 
   // onShow: function() {
   //   var defaultGeo = {
@@ -84,33 +84,34 @@ export default ModalController.extend({
         title = this.get('topicTitle'),
         categoryId = this.get('controllers.home.model.firstObject.category_id');
 
-      var apiKey = this.get('settingsService.apiKey');
-      var apiUsername = this.get('settingsService.apiUsername');
+      var newTopicData = {
+        "archetype": "regular",
+        "raw": firstPost,
+        "title": title,
+        "category": categoryId
+      };
+
+      if (EmberENV.isDevelopment) {
+        newTopicData.apiKey = this.get('settingsService.apiKey');
+        newTopicData.apiUsername = this.get('settingsService.apiUsername');
+      };
 
 
       var create_post_endpoint = '/posts';
       var firstPost = $.ajax(create_post_endpoint, {
-        data: {
-          "api_key": apiKey,
-          "api_username": apiUsername,
-          "archetype": "regular",
-          "raw": firstPost,
-          "title": title,
-          "category": categoryId
-        },
+        data: newTopicData,
         method: 'POST'
-
       });
       var self = this;
       firstPost.then(function(result) {
           self.send('closeModal')
-          self.transitionToRoute('topic', result.topic_id, result.topic_slug );
+          self.transitionToRoute('topic', result.topic_id, result.topic_slug);
         },
         function(error) {
           // debugger;
           self.set('serverError', error.responseJSON.errors[0]);
           self.flash(error.responseJSON.errors[0], 'error');
-	        self.set('validate', false);
+          self.set('validate', false);
         });
 
     }

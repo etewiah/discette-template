@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import ENV from '../config/environment';
+// not quite sure how to access above..
 
 export default Ember.Route.extend({
   actions: {
@@ -13,32 +15,34 @@ export default Ember.Route.extend({
       var topic_id = this.controller.get('model.id');
       var category_id = this.controller.get('model.category_id');
       var draft = this.controller.get('model.draft');
-      var apiKey = this.get('settingsService.apiKey');
-      var apiUsername = this.get('settingsService.apiUsername');
+
+      var replyData = {
+        "raw": draft,
+        "topic_id": topic_id,
+        "archetype": "regular",
+        "category": category_id
+      };
+
+      if (EmberENV.isDevelopment) {
+        replyData.apiKey = this.get('settingsService.apiKey');
+        replyData.apiUsername = this.get('settingsService.apiUsername');
+      };
 
       var create_post_endpoint = '/posts';
       var reply = $.ajax(create_post_endpoint, {
-        data: {
-          "api_key": apiKey,
-          "api_username": apiUsername,
-          "raw": draft,
-          "topic_id": topic_id,
-          "archetype": "regular",
-          "category": category_id
-        },
+        data: replyData,
         method: 'POST'
 
       });
       var that = this;
       reply.then(function(result) {
-        // console.log(that);
-        var postStream = that.controller.get('model.post_stream');
-        postStream.posts.pushObject(result);
-      },
-      function(error){
-        //TODO - handle errors;
-        // debugger;
-      });
+          // console.log(that);
+          var postStream = that.controller.get('model.post_stream');
+          postStream.posts.pushObject(result);
+        },
+        function(error) {
+          debugger;
+        });
 
     }
   },
