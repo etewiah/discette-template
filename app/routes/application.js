@@ -5,7 +5,7 @@ var ApplicationRoute;
 ApplicationRoute = Ember.Route.extend({
   beforeModel: function() {
     // debugger;
-    if (EmberENV.isProxying) {
+    if (!EmberENV.disableCSRF) {
       return this.csrf.fetchToken();
     }
   },
