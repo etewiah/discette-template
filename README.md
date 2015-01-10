@@ -1,7 +1,13 @@
 # Discette
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This Ember application was created using ember-cli and is designed to work with a [Discourse](http://www.discourse.org/) backend.
+
+You can work with this repository on your local machine as per the instructions below. 
+
+If you wish to make any changes, please fork this repository.  I am happy to host any repository that is forked from this at http://klavado.com.  Here is how that works:
+ * Go to any subdomain at klavado.com.  eg http://myname.klavado.com
+ * If that subdomain is available, claim it by clicking on the button (You will need to create an account first if you don't have one.
+ * Once you've done that, leave me a message here ( http://klavado.com/users/ed_tee ) and I will deploy your fork of this discette-template to the subdomain you claimed.  Simple as that ;)
 
 ## Prerequisites
 
