@@ -26,6 +26,12 @@ module.exports = function(environment) {
       // set below to true to ensure csrf token is not fetched in application route beforeModel hook:
       ENV.EmberENV.disableCSRF = true;
     }
+    else{
+      // if we are in dev and we have disabled mocks
+      // then assume we are forwarding to a discourse instance for which we will have
+      // to use api keys to post
+      ENV.EmberENV.useApiKeys = true;
+    }
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

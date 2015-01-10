@@ -1,7 +1,10 @@
 export function initialize(container, application) {
-	// not availabe in components though..
-  application.inject('route', 'settingsService', 'service:settings');
-  application.inject('controller', 'settingsService', 'service:settings');
+  if (EmberENV.useApiKeys) {
+
+    // not availabe in components though..
+    application.inject('route', 'settingsService', 'service:settings');
+    application.inject('controller', 'settingsService', 'service:settings');
+  }
 }
 
 export default {

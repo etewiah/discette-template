@@ -96,7 +96,7 @@ export default ModalController.extend({
         "category": categoryId
       };
 
-      if (EmberENV.isDevelopment) {
+      if (EmberENV.useApiKeys) {
         newTopicData.apiKey = this.get('settingsService.apiKey');
         newTopicData.apiUsername = this.get('settingsService.apiUsername');
       }
