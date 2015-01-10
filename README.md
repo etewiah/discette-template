@@ -2,12 +2,19 @@
 
 This Ember application was created using ember-cli and is designed to work with a [Discourse](http://www.discourse.org/) backend.
 
-You can work with this repository on your local machine as per the instructions below. 
+One of the main reasons for this is that even after many months of working with the Discourse codebase, I find too large to easily find my way around.  This NOT a criticism of Discourse, it has a ton of functionality and probably needs to be complex.  I just find that I don't need a lot of that functionality and I got curious about what the minimum amount of functionality for a front end would be.  Well, this is what I came up with.  You can see it in action here:
+
+http://ed.klavado.com/home
+
+There are about 2.3 million extra bits of functionality that could be added but the point of this is that anyone can fork this basic implementation and add what the hell they want.  It is a pretty simple (too simple perhaps) codebase and anyone who manages to get their head round ember-cli will understand it in minutes.
 
 If you wish to make any changes, please fork this repository.  I am happy to host any repository that is forked from this at http://klavado.com.  Here is how that works:
  * Go to any subdomain at klavado.com.  eg http://myname.klavado.com
  * If that subdomain is available, claim it by clicking on the button (You will need to create an account first if you don't have one.
  * Once you've done that, leave me a message here ( http://klavado.com/users/ed_tee ) and I will deploy your fork of this discette-template to the subdomain you claimed.  Simple as that ;)
+
+
+You can work with this repository on your local machine as per the instructions below.
 
 ## Prerequisites
 
@@ -36,7 +43,13 @@ It is possible to connect to a real discourse server while in development by sta
 
 `DISABLE_MOCK=true ember serve --proxy http://madrid.lvh.me:3000/`
 
-You will however have to make sure CORS is set up correctly on the discourse server or use api keys:  I will provide more detailed instructions on this when I get the chance.
+You will however need to install this plug-in to your discourse server:
+
+https://github.com/etewiah/discourse-drive
+
+You will also have to make sure CORS is set up correctly on the discourse server or use api keys:  I will provide more detailed instructions on this when I get the chance.
+
+Right now I'd recommend that you stick with the default of using mock data.  Once I have the plug-in better developed, I will update this readme.
 
 ### Code Generators
 
