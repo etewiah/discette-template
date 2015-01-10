@@ -3,7 +3,12 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     startNewTopic: function() {
-      this.send('openModal', 'modal/new_topic');
+      var currentUser = this.controllerFor('application').get('currentUser');
+      if (currentUser) {
+        this.send('openModal', 'modal/new_topic');
+      } else{
+        this.send('openModal', 'modal/log_in');
+      }
     }
   },
   model: function(params) {

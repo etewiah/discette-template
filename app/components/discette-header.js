@@ -35,7 +35,7 @@ export default Ember.Component.extend({
       return true;
     } else {
       return false;
-    };
+    }
     // var userJson = PreloadStore.get('currentUser');
     // if (userJson) {
     //   userJson.avatarUrl = "http://klavado.com" + userJson.avatar_template.replace(/\{size\}/g, '32');

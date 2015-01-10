@@ -100,31 +100,30 @@ LogInController = ModalController.extend({
   // }).property('authenticate'),
 
   authenticationComplete: function(options) {
-  	debugger;
-    if (options.requires_invite) {
-      this.send('showLogin');
-      this.flash(I18n.t('login.requires_invite'), 'success');
-      this.set('authenticate', null);
-      return;
-    }
-    if (options.awaiting_approval) {
-      this.send('showLogin');
-      this.flash(I18n.t('login.awaiting_approval'), 'success');
-      this.set('authenticate', null);
-      return;
-    }
-    if (options.awaiting_activation) {
-      this.send('showLogin');
-      this.flash(I18n.t('login.awaiting_confirmation'), 'success');
-      this.set('authenticate', null);
-      return;
-    }
-    if (options.not_allowed_from_ip_address) {
-      this.send('showLogin');
-      this.flash(I18n.t('login.not_allowed_from_ip_address'), 'success');
-      this.set('authenticate', null);
-      return;
-    }
+    // if (options.requires_invite) {
+    //   this.send('showLogin');
+    //   this.flash(I18n.t('login.requires_invite'), 'success');
+    //   this.set('authenticate', null);
+    //   return;
+    // }
+    // if (options.awaiting_approval) {
+    //   this.send('showLogin');
+    //   this.flash(I18n.t('login.awaiting_approval'), 'success');
+    //   this.set('authenticate', null);
+    //   return;
+    // }
+    // if (options.awaiting_activation) {
+    //   this.send('showLogin');
+    //   this.flash(I18n.t('login.awaiting_confirmation'), 'success');
+    //   this.set('authenticate', null);
+    //   return;
+    // }
+    // if (options.not_allowed_from_ip_address) {
+    //   this.send('showLogin');
+    //   this.flash(I18n.t('login.not_allowed_from_ip_address'), 'success');
+    //   this.set('authenticate', null);
+    //   return;
+    // }
     // Reload the page if we're authenticated
     if (options.authenticated) {
       // TODO - implement logic like below:

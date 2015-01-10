@@ -8,7 +8,12 @@ export default Ember.Route.extend({
       this.controller.set('isEditing', false);
     },
     startReplyToTopic: function() {
-      this.controller.set('isEditing', true);
+      var currentUser = this.controllerFor('application').get('currentUser');
+      if (currentUser) {
+        this.controller.set('isEditing', true);
+      } else{
+        this.send('openModal', 'modal/log_in');
+      };
     },
     processReplyToTopic: function() {
       this.controller.set('isEditing', false);

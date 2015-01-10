@@ -6,7 +6,8 @@
     "$",
     "PreloadStore",
     "Ember",
-    "Em"
+    "Em",
+    "EmberENV"
   ],
   "browser": true,
   "boss": true,

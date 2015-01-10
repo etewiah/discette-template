@@ -23,16 +23,20 @@ export default ModalController.extend({
   firstPostValidation: function() {
     if (!this.get('validate')) {
       return;
-    };
-    if (this.get('serverError')) return Ember.Object.create({
-      failed: true,
-      reason: this.get('serverError')
+    }
+    if (this.get('serverError')) {
+      return Ember.Object.create({
+        failed: true,
+        reason: this.get('serverError')
 
-    });
-    if (Ember.empty('firstPost')) return Ember.Object.create({
-      failed: true,
-      reason: "Please enter a description."
-    });
+      });
+    }
+    if (Ember.empty('firstPost')) {
+      return Ember.Object.create({
+        failed: true,
+        reason: "Please enter a description."
+      });
+    }
     // If too short
     if (this.get('firstPost').length < 10) {
       return Ember.Object.create({
@@ -50,12 +54,13 @@ export default ModalController.extend({
   titleValidation: function() {
     if (!this.get('validate')) {
       return;
-    };
-    if (Ember.empty('topicTitle')) return Ember.Object.create({
-      failed: true,
-      reason: "Please enter a title."
-    });
-    // If too short
+    }
+    if (Ember.empty('topicTitle')) {
+      return Ember.Object.create({
+        failed: true,
+        reason: "Please enter a title."
+      })
+    }
     if (this.get('topicTitle').length < 5) {
       return Ember.Object.create({
         failed: true,
@@ -84,8 +89,6 @@ export default ModalController.extend({
         title = this.get('topicTitle'),
         categoryId = this.get('controllers.home.category.id');
 
-debugger;
-
       var newTopicData = {
         "archetype": "discette",
         "raw": firstPost,
@@ -96,8 +99,7 @@ debugger;
       if (EmberENV.isDevelopment) {
         newTopicData.apiKey = this.get('settingsService.apiKey');
         newTopicData.apiUsername = this.get('settingsService.apiUsername');
-      };
-
+      }
 
       var create_post_endpoint = '/posts';
       var firstPost = $.ajax(create_post_endpoint, {
@@ -113,9 +115,9 @@ debugger;
           // debugger;
           // self.set('serverError', error.responseJSON.errors[0]);
           var errorMessage = "Sorry, there has been an error.";
-          if (error.responseJSON) {
+          if (error.responseJSON && error.responseJSON.errors) {
             errorMessage = error.responseJSON.errors[0];
-          } 
+          }
           self.flash(errorMessage, 'error');
           self.set('validate', false);
         });
