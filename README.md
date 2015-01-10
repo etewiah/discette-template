@@ -21,7 +21,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/etewiah/discette-template `
 * change into the new directory
 * `npm install`
 * `bower install`
@@ -30,6 +30,13 @@ You will need the following things properly installed on your computer.
 
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+
+Please note that by default, when in development it will use mock data served by the built-in express server.  This means that the topics and posts remain the same as you navigate the app.
+It is possible to connect to a real discourse server while in development by starting the server so:
+
+`DISABLE_MOCK=true ember serve --proxy http://madrid.lvh.me:3000/`
+
+You will however have to make sure CORS is set up correctly on the discourse server or use api keys:  I will provide more detailed instructions on this when I get the chance.
 
 ### Code Generators
 
@@ -47,7 +54,9 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+Deploying to your own discourse instance currently involves quite a lot of manual steps - I am working on automating it to a reasonable degree so that I can document it easily here.
+
+In the meantime, as mentioned at the top of this readme, you can contact me via klavado.com and I will deploy your application to any subdomain on klavado.com that is available.  This is only an offer to allow people to experiment with discourse in a quick, easy and free way - I am not offering any guarantees about service levels and at this stage I would not recommend it for anything more than 'kicking the tyres'.
 
 ## Further Reading / Useful Links
 
