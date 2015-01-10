@@ -82,10 +82,12 @@ export default ModalController.extend({
 
       var firstPost = this.get('firstPost'),
         title = this.get('topicTitle'),
-        categoryId = this.get('controllers.home.model.firstObject.category_id');
+        categoryId = this.get('controllers.home.category.id');
+
+debugger;
 
       var newTopicData = {
-        "archetype": "regular",
+        "archetype": "discette",
         "raw": firstPost,
         "title": title,
         "category": categoryId
@@ -109,8 +111,12 @@ export default ModalController.extend({
         },
         function(error) {
           // debugger;
-          self.set('serverError', error.responseJSON.errors[0]);
-          self.flash(error.responseJSON.errors[0], 'error');
+          // self.set('serverError', error.responseJSON.errors[0]);
+          var errorMessage = "Sorry, there has been an error.";
+          if (error.responseJSON) {
+            errorMessage = error.responseJSON.errors[0];
+          } 
+          self.flash(errorMessage, 'error');
           self.set('validate', false);
         });
 
