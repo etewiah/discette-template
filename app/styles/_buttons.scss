@@ -1,0 +1,75 @@
+// --------------------------------------------------
+// Buttons
+// --------------------------------------------------
+
+
+
+// Social buttons
+// --------------------------------------------------
+
+.btn-social {
+  margin-bottom: 5px;
+  color: $secondary;
+  text-shadow: 0 1px 0 rgba($primary, 0.2);
+  box-shadow: inset 0 1px 0 rgba(0,0,0, 0.1);
+  &[href] {
+    color: $secondary;
+  }
+  &:before {
+    margin-right: 7px;
+    font-family: zocial;
+    line-height: 0.9;
+  }
+  &.google, &.google_oauth2 {
+    background: $google;
+    &:before {
+      content: "G";
+    }
+  }
+  &.facebook {
+    background: $facebook;
+    &:before {
+      content: "f";
+    }
+  }
+  &.cas {
+    background: $cas;
+  }
+  &.twitter {
+    background: $twitter;
+    &:before {
+      content: "T";
+    }
+  }
+  &.yahoo {
+    background: $yahoo;
+    &:before {
+      content: "Y";
+    }
+  }
+  &.github {
+    background: $github;
+    &:before {
+      content: "g";
+    }
+  }
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+// Small
+
+/*.btn-small {
+  padding: 3px 6px;
+  font-size: 0.857em;
+  line-height: 16px;
+}
+
+// Large
+
+.btn-large {
+  padding: 9px 18px;
+  font-size: 1.143em;
+  line-height: 20px;
+}*/

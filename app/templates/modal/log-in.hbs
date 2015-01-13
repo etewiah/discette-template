@@ -8,6 +8,15 @@
 
 <div id='modal-alert'></div>
 <div class="modal-body">
+
+    <div class="row">
+      {{#each b in controller.loginButtons }}
+        <div class="col-md-6 col-sm-12" >
+          <button {{bind-attr class=":btn :btn-social b.name"}} {{action "externalLogin" b}}>{{b.title}}</button>
+        </div>
+      {{/each}}
+    </div>
+
     <form id='login-form' method='post'>
       <div class="form-group" style="margin-bottom: 0px;">
         <div>
@@ -33,9 +42,6 @@
             </div>
           </div>
           <div style="display:none">
-            <div></div>
-            <div><div {{bind-attr class=":caps-lock-warning capsLockOn::invisible"}}><i class="fa fa-exclamation-triangle"></i> 'login.caps_lock_warning'</div></div>
-            <div></div>
           </div>
         </div>
       </div>
@@ -43,6 +49,7 @@
   {{authMessage}}
   <div id='login-alert' {{bind-attr class="alertClass"}}>{{alert}}</div>
 </div>
+
 <div class="modal-footer">
     <button class='btn' {{action 'closeModal' }} style="">
         Cancel
@@ -52,13 +59,6 @@
       {{action "login"}}>
         <i class="fa fa-unlock"></i>&nbsp;Log In
     </button>
-
-    {{#if showSignupLink}}
-      &nbsp;
-      <button class="btn btn-large" id="new-account-link" {{action "createAccount"}}>
-        'create_account.title'
-      </button>
-    {{/if}}
 
   {{#if authenticate}}
     &nbsp; 'login.authenticating'

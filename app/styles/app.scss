@@ -1,7 +1,53 @@
+
+// --------------------------------------------------
+// Variables used throughout the theme
+// --------------------------------------------------
+
+// Layout dimensions
+// --------------------------------------------------
+
+$small-width: 800px !default;
+$medium-width: 995px !default;
+$large-width: 1110px !default;
+
+// Brand color variables
+// --------------------------------------------------
+
+$google: #5b76f7 !default;
+$facebook: #3b5998 !default;
+$cas: #70BA61 !default;
+$twitter: #00bced !default;
+$yahoo: #810293 !default;
+$github: #6d6d6d !default;
+
+// Fonts
+// --------------------------------------------------
+
+$base-font-size: 14px !default;
+$base-line-height: 19px !default; 
+$base-font-family: Helvetica, Arial, sans-serif !default;
+
+
+
+
+$primary:           #222222 !default;
+$secondary:         #ffffff !default;
+$tertiary:          #0088cc !default;
+$quaternary:        #e45735 !default;
+$header_background: #ffffff !default;
+$header_primary:    #333333 !default;
+$highlight:         #ffff4d !default;
+$danger:            #e45735 !default;
+$success:           #009900 !default;
+$love:              #fa6c8d !default;
+$wiki:              #408040 !default;
+
+
 @import "header";
 @import "bootstrap";
 @import "topic-post";
 @import "home";
+@import "buttons";
 
 html, body {
   margin: 20px;
