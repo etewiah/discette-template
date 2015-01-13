@@ -101,13 +101,21 @@ LogInController = ModalController.extend({
 
   loginButtons: function() {
     var methods = Ember.A();
+    var twitterParams = {
+      name: "twitter",
+      faClass: "fa-twitter",
+      title: "with Twitter",
+      message: "twitter message"
+    };
     var githubParams = {
       name: "github",
+      faClass: "fa-github",
       title: "with GitHub",
       message: "github message"
     };
     var googleOauth2Params = {
       name: "google",
+      faClass: "fa-google",
       title: "with Google",
       message: "google message",
       frameWidth: 850,
@@ -115,14 +123,16 @@ LogInController = ModalController.extend({
     };
     var facebookParams = {
       name: "facebook",
+      faClass: "fa-facebook",
       title: "with Facebook",
       message: "facebook message",
       frameHeight: 450
     };
 
-    [ githubParams,
+    [ twitterParams,
       googleOauth2Params,
-      facebookParams
+      facebookParams,
+      githubParams
       // "facebook",
       // "cas",
       // "twitter",

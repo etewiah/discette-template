@@ -22,37 +22,37 @@
   }
   &.google, &.google_oauth2 {
     background: $google;
-    &:before {
+/*    &:before {
       content: "G";
     }
-  }
+*/  }
   &.facebook {
     background: $facebook;
-    &:before {
+/*    &:before {
       content: "f";
     }
-  }
+*/  }
   &.cas {
     background: $cas;
   }
   &.twitter {
     background: $twitter;
-    &:before {
+/*    &:before {
       content: "T";
     }
-  }
+*/  }
   &.yahoo {
     background: $yahoo;
-    &:before {
+/*    &:before {
       content: "Y";
     }
-  }
+*/  }
   &.github {
     background: $github;
-    &:before {
+/*    &:before {
       content: "g";
     }
-  }
+*/  }
 }
 
 // Button Sizes

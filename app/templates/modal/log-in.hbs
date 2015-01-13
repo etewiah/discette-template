@@ -12,7 +12,7 @@
     <div class="row">
       {{#each b in controller.loginButtons }}
         <div class="col-md-6 col-sm-12" >
-          <button {{bind-attr class=":btn :btn-social b.name"}} {{action "externalLogin" b}}>{{b.title}}</button>
+          <button {{bind-attr class=":btn :btn-social b.name"}} {{action "externalLogin" b}}><i  {{bind-attr class=":fa b.faClass"}} ></i>{{b.title}}</button>
         </div>
       {{/each}}
     </div>
