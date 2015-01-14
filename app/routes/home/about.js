@@ -1,4 +1,4 @@
-import Ember from 'ember';
+// import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
@@ -113,9 +113,10 @@ export default Ember.Route.extend({
     }
   },
   model: function() {
-    var sectionModel = this.modelFor('home');
+    // var sectionModel = this.modelFor('home');
     // debugger;
-    var apiUrl = "/t/" + sectionModel.about_topic.slug + "/" + sectionModel.about_topic.id + ".json";
+    var apiUrl = "/discette/about";
+    // "/t/" + sectionModel.about_topic.slug + "/" + sectionModel.about_topic.id + ".json";
     var topic = $.getJSON(apiUrl).then(
       function(detailedTopic) {
         return detailedTopic;
