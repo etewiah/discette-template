@@ -1,7 +1,0 @@
-//update this file and rename to settings.js
-import Ember from 'ember';
-
-export default Ember.Object.extend({
-	apiKey: 'apiKey',
-	apiUsername: 'apiUsername'
-});

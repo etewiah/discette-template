@@ -96,10 +96,10 @@ export default ModalController.extend({
         "category": categoryId
       };
 
-      if (EmberENV.useApiKeys) {
-        newTopicData.apiKey = this.get('settingsService.apiKey');
-        newTopicData.apiUsername = this.get('settingsService.apiUsername');
-      }
+      // if (EmberENV.useApiKeys) {
+      //   newTopicData.apiKey = this.get('settingsService.apiKey');
+      //   newTopicData.apiUsername = this.get('settingsService.apiUsername');
+      // }
 
       var create_post_endpoint = '/posts';
       var firstPostResult = $.ajax(create_post_endpoint, {

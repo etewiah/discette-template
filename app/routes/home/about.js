@@ -44,10 +44,11 @@ export default Ember.Route.extend({
         "category": category_id
       };
 
-      if (EmberENV.useApiKeys) {
-        replyData.apiKey = this.get('settingsService.apiKey');
-        replyData.apiUsername = this.get('settingsService.apiUsername');
-      }
+      // if (EmberENV.useApiKeys) {
+      //   // replyData.apiKey = this.get('settingsService.apiKey');
+      //   // replyData.apiUsername = this.get('settingsService.apiUsername');
+      //   debugger;
+      // }
 
       var create_post_endpoint = '/posts';
       var reply = $.ajax(create_post_endpoint, {
@@ -85,10 +86,10 @@ export default Ember.Route.extend({
         "category": category_id
       };
 
-      if (EmberENV.useApiKeys) {
-        replyData.apiKey = this.get('settingsService.apiKey');
-        replyData.apiUsername = this.get('settingsService.apiUsername');
-      }
+      // if (EmberENV.useApiKeys) {
+      //   replyData.apiKey = this.get('settingsService.apiKey');
+      //   replyData.apiUsername = this.get('settingsService.apiUsername');
+      // }
 
       var update_post_endpoint = '/posts/' + this.controller.get('primaryPost.id');
       var reply = $.ajax(update_post_endpoint, {

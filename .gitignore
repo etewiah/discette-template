@@ -17,4 +17,5 @@ npm-debug.log
 testem.log
 
 # below will contain private api key:
-/app/services/settings.js
+/app/services/api.js
+/app/initializers/api-service.js
