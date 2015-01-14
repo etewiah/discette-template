@@ -13,39 +13,45 @@
 
 <div class="topic-details">
 
-  <div class="container posts">
+  <div class="container">
 
+
+    {{#if controller.isEditingPrimaryPost }}
+      <div class="row">
+        <div class='col-sm-12'>
+          {{content-composer height=200 btnSize=bs-sm content=controller.primaryPostWithRaw.raw focus=true save='updatePrimaryPost' cancel='cancelPrimaryPostEdit' }}
+        </div>
+      </div>
+
+  {{else}}
     <div class="row">
       <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
         <div class='posts-wrapper'>
 
           <div class='col-md-10 col-sm-10 col-xs-12'>
-            <div class='topic-body'>
               <div class='bottom-round contents regular'>
                 <div class="cooked">
                   {{{ controller.primaryPost.cooked }}}
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </section>
     </div>
-
-
-
     <div class="row reply-btn-row">
       <div class='col-md-11'>
+      {{#if controller.primaryPost.can_edit }}
         <button class='btn btn-primary pull-right' style="" {{action 'startEditingPrimaryPost' }} title="">
           <i class="fa fa-pencil"></i>Edit
         </button>
+      {{/if}}
       </div>
     </div>
+    {{/if}}
 
 
 
     <div class="row">
-
       <div class='col-md-12'>
         <h4>Comments:</h4>
       </div>

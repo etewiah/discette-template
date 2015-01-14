@@ -1,0 +1,19 @@
+    <div class="row reply-row">
+      <div class='col-md-1 hidden-sm'>
+      </div>
+      <div class='col-md-9 col-sm-12'>
+        <div class="pagedown-container bottom-round">
+        {{textarea classNames='pgdn-textarea form-control' value=content}}
+        </div>
+      </div>
+      <div class='col-md-1 col-sm-12'>
+        <div style="margin-top:3%">
+          <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'save' }} title="">
+            Save
+          </button>
+          <button class='btn' style="" {{action 'cancel' }} title="">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
