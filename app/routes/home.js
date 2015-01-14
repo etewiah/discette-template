@@ -22,10 +22,10 @@ export default Ember.Route.extend({
       });
     return topics;
   },
-  setupController: function(controller, model) {
-    controller.set('model', model.discette_topics);
-    controller.set('aboutTopic', model.about_topic);
-    controller.set('category', model.category);
+  // setupController: function(controller, model) {
+  //   controller.set('model', model.discette_topics);
+  //   controller.set('aboutTopic', model.about_topic);
+  //   controller.set('category', model.category);
 
-  }
+  // }
 });

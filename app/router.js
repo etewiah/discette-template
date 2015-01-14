@@ -6,14 +6,30 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route("home");
-  // this.resource("topic", function() {});
-  this.resource('topic', {
-    path: 'd/:id/:slug'
-  }, function() {
+  // this.route("home");
+  // this.route("about-section");
+  // this.route("manage-section");
 
-    this.route('default', {
-      path: '/'
+  this.resource("home", {
+    path: "home"
+  }, function() {
+    this.route("default", {
+      path: "/"
+    });
+    this.route("about", {
+      path: "/about"
+    });    
+    this.route("manage", {
+      path: "/manage"
+    });
+  });
+
+
+  this.resource("topic", {
+    path: "d/:id/:slug"
+  }, function() {
+    this.route("default", {
+      path: "/"
     });
   });
 });
