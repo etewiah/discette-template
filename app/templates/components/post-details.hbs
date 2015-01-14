@@ -1,44 +1,40 @@
 <div class='topic-post'>
-<article {{bind-attr class=":boxed via_email" id="postElementId" data-post-id="id" data-user-id="user_id" }}>
-  <div class='row'>
+  <article {{bind-attr class=":boxed via_email" id="postElementId" data-post-id="id" data-user-id="user_id" }}>
+    <div class='row'>
 
-    <div class='topic-meta-data topic-avatar col-md-1 col-sm-2 col-xs-12'>
+      <div class='topic-meta-data topic-avatar col-md-1 col-sm-2 col-xs-12'>
 
-			<div class="contents">
-          <a    {{bind-attr  href="usernameUrl"  data-user-card="post.username" }}    classnames="trigger-user-card main-avatar" >
-            <img width="45" height="45" {{bind-attr src="avatarUrl" title="post.username"}} class="avatar">
+        <div class="contents">
+          <a {{bind-attr href="usernameUrl" data-user-card="post.username" }} classnames="trigger-user-card main-avatar">
+            <img width="45" height="45" {{bind-attr src="avatarUrl" title="post.username" }} class="avatar">
           </a>
-      </div>
-      <div class="poster-name pull-left">
-        {{ post.name post.user_name }}
-      </div>
-
-    </div>
-
-    <div class='col-md-10 col-sm-10 col-xs-12'>
-    <div class='topic-body'>
-      <div class='bottom-round contents regular'>
-
-        <div class='post-info pull-right'>
-          <span class="relative-date" {{bind-attr title="longCreatedAt"}} title="January 7, 2015 3:13am" data-time="1420596816564" data-format="tiny">{{ago post.created_at }} </span>
-          {{!-- TODO: enable bellow --}}
-          <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number" }}>
-                    </a>
         </div>
-
-        <div class="cooked">
-        	{{{ post.cooked }}}
+        <div class="poster-name pull-left">
+          {{ post.name post.user_name }}
         </div>
 
       </div>
-    </div>
-    </div>
 
-  </div>
-</article>
+      <div class='col-md-10 col-sm-10 col-xs-12'>
+        <div class='topic-body'>
+          <div class='bottom-round contents regular'>
+
+            <div class='post-info pull-right'>
+              <span class="relative-date" {{bind-attr title="longCreatedAt" }} title="January 7, 2015 3:13am" data-time="1420596816564" data-format="tiny">{{ago post.created_at }} </span> {{!-- TODO: enable bellow --}}
+              <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number" }}>
+              </a>
+            </div>
+
+            <div class="cooked">
+              {{{ post.cooked }}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </article>
 
 
 </div>
-
-
-
