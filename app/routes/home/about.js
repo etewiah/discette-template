@@ -12,7 +12,7 @@ export default Ember.Route.extend({
       var currentUser = this.controllerFor('application').get('currentUser');
       if (currentUser) {
         this.controller.set('isEditingPrimaryPost', true);
-
+        this.controller.set('isCommenting', false);
         var postApiUrl = "/posts/" + this.controller.get('primaryPost.id')+ ".json";
         var that = this;
         var post = $.getJSON(postApiUrl).then(
@@ -27,12 +27,12 @@ export default Ember.Route.extend({
       var currentUser = this.controllerFor('application').get('currentUser');
       if (currentUser) {
         this.controller.set('isCommenting', true);
+        this.controller.set('isEditingPrimaryPost', false);
       } else {
         this.send('openModal', 'modal/log_in');
       }
     },
-    processReplyToTopic: function() {
-      this.controller.set('isCommenting', false);
+    processSectionComment: function() {
       var topic_id = this.controller.get('model.id');
       var category_id = this.controller.get('model.category_id');
       var draft = this.controller.get('model.draft');
@@ -57,18 +57,20 @@ export default Ember.Route.extend({
       });
       var that = this;
       reply.then(function(result) {
-          // console.log(that);
-          var postStream = that.controller.get('model.post_stream');
-          postStream.posts.pushObject(result);
+          that.controller.set('isCommenting', false);
+          var comments = that.controller.get('comments');
+          comments.pushObject(result);
         },
         function(error) {
-          // TODO - handle errors
-          // debugger;
+          var errorMessage = "Sorry, there has been an error.";
+          if (error.responseJSON && error.responseJSON.errors) {
+            errorMessage = error.responseJSON.errors[0];
+          }
+          that.controller.set('commentServerError', errorMessage);
         });
 
     },
     updatePrimaryPost: function() {
-      this.controller.set('isEditingPrimaryPost', false);
       var topic_id = this.controller.get('model.id');
       var category_id = this.controller.get('model.category_id');
       var updatedPost = this.controller.get('primaryPostWithRaw.raw');
@@ -96,12 +98,17 @@ export default Ember.Route.extend({
       });
       var that = this;
       reply.then(function(result) {
+          that.controller.set('isEditingPrimaryPost', false);
           that.controller.set('primaryPost', result.post);
         },
         function(error) {
-          // TODO - handle errors
-          // debugger;
+          var errorMessage = "Sorry, there has been an error.";
+          if (error.responseJSON && error.responseJSON.errors) {
+            errorMessage = error.responseJSON.errors[0];
+          }
+          that.controller.set('primaryPostServerError', errorMessage);
         });
+
 
     }
   },

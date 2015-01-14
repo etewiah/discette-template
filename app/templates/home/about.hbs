@@ -19,7 +19,7 @@
     {{#if controller.isEditingPrimaryPost }}
       <div class="row">
         <div class='col-sm-12'>
-          {{content-composer height=200 btnSize=bs-sm content=controller.primaryPostWithRaw.raw focus=true save='updatePrimaryPost' cancel='cancelPrimaryPostEdit' }}
+          {{content-composer minContentLength=2 serverError=controller.primaryPostServerError  height=200 btnSize=bs-sm content=controller.primaryPostWithRaw.raw focus=true save='updatePrimaryPost' cancel='cancelPrimaryPostEdit' }}
         </div>
       </div>
 
@@ -71,28 +71,15 @@
 
 
     {{#if controller.isCommenting}}
-    <div class="row reply-row">
-      <div class='col-md-1 hidden-sm'>
-        <h4>Comment:</h4>
-      </div>
-      <div class='col-md-9 col-sm-12'>
-        <div class="pagedown-container bottom-round">
-          {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
+
+      <div class="row">
+        <div class='col-sm-12'>
+          {{content-composer minContentLength=20 serverError=controller.commentServerError height=200 btnSize=bs-sm content=model.draft focus=true save='processSectionComment' 
+              cancel='cancelReplyToTopic' }}
         </div>
       </div>
-      <div class='col-md-1 col-sm-12'>
-        <div style="margin-top:3%">
-          <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'processReplyToTopic' }} title="">
-            Save
-          </button>
-          <button class='btn' style="" {{action 'cancelReplyToTopic' }} title="">
-            Cancel
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-    </div>
+
+
     {{else}}
     <div class="row reply-btn-row">
       <div class='col-md-11'>

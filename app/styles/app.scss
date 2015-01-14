@@ -53,6 +53,10 @@ html, body {
   margin: 20px;
 }
 
+.row{
+  margin-top: 10px;
+}
+
 .relative-date {
   color: #aaa;
 }
@@ -117,7 +121,7 @@ html, body {
 .pagedown-container .cooked h1, .pagedown-container .cooked h2, .pagedown-container .cooked h3, .pagedown-container .cooked h4, .pagedown-container .cooked h5, .pagedown-container .cooked h6 {
   margin: 20px 0 10px;
 }
-.pagedown-container:before, .pagedown-container:after {
+/*.pagedown-container:before, .pagedown-container:after {
   position: absolute;
   width: 0;
   height: 0;
@@ -137,7 +141,7 @@ html, body {
   left: -8px;
   border-width: 9px 9px 9px 0;
   border-right-color: white;
-}
+}*/
 
 
 .pagedown-container .bottom-round {
