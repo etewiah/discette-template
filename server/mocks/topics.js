@@ -35,7 +35,7 @@ module.exports = function(app) {
   //   res.status(204).end();
   // });
 
-  app.use('/discette_topics', topicsRouter);
+  app.use('/discette/topics', topicsRouter);
 };
 
 
