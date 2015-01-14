@@ -59,7 +59,7 @@ export default ModalController.extend({
       return Ember.Object.create({
         failed: true,
         reason: "Please enter a title."
-      })
+      });
     }
     if (this.get('topicTitle').length < 5) {
       return Ember.Object.create({
@@ -102,13 +102,13 @@ export default ModalController.extend({
       }
 
       var create_post_endpoint = '/posts';
-      var firstPost = $.ajax(create_post_endpoint, {
+      var firstPostResult = $.ajax(create_post_endpoint, {
         data: newTopicData,
         method: 'POST'
       });
       var self = this;
-      firstPost.then(function(result) {
-          self.send('closeModal')
+      firstPostResult.then(function(result) {
+          self.send('closeModal');
           self.transitionToRoute('topic', result.topic_id, result.topic_slug);
         },
         function(error) {

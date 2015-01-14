@@ -2,6 +2,7 @@ import ModalController from '../modal';
 var LogInController;
 
 LogInController = ModalController.extend({
+  needs: ['application'],
   actions: {
     login: function() {
       var self = this;
@@ -61,7 +62,6 @@ LogInController = ModalController.extend({
     },
 
     externalLogin: function(loginMethod){
-      debugger;
       var name = loginMethod.get("name");
       var customLogin = loginMethod.get("customLogin");
 
@@ -75,8 +75,7 @@ LogInController = ModalController.extend({
         var height = loginMethod.get("frameHeight") || 400;
         var width = loginMethod.get("frameWidth") || 800;
 
-        // TODO: get from singleton:
-        var authUrl =  "http://klavado.com/auth/" + name; 
+        var authUrl =  this.get('settingsService.currentSection.rootUrl') + "/auth/" + name; 
         // Discourse.getURL("/auth/" + name)
 
         var w = window.open(authUrl, "_blank",
@@ -84,7 +83,6 @@ LogInController = ModalController.extend({
         var self = this;
         var timer = setInterval(function() {
           if(!w || w.closed) {
-            debugger;
             clearInterval(timer);
             self.set('authenticate', null);
           }
@@ -92,11 +90,11 @@ LogInController = ModalController.extend({
       }
     },
 
-    createAccount: function() {
-      var createAccountController = this.get('controllers.createAccount');
-      createAccountController.resetForm();
-      this.send('showCreateAccount');
-    }
+    // createAccount: function() {
+    //   var createAccountController = this.get('controllers.createAccount');
+    //   createAccountController.resetForm();
+    //   this.send('showCreateAccount');
+    // }
   },
 
   loginButtons: function() {

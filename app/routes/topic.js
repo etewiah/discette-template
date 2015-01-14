@@ -13,7 +13,7 @@ export default Ember.Route.extend({
         this.controller.set('isEditing', true);
       } else{
         this.send('openModal', 'modal/log_in');
-      };
+      }
     },
     processReplyToTopic: function() {
       this.controller.set('isEditing', false);
@@ -31,7 +31,7 @@ export default Ember.Route.extend({
       if (EmberENV.useApiKeys) {
         replyData.apiKey = this.get('settingsService.apiKey');
         replyData.apiUsername = this.get('settingsService.apiUsername');
-      };
+      }
 
       var create_post_endpoint = '/posts';
       var reply = $.ajax(create_post_endpoint, {
@@ -46,7 +46,8 @@ export default Ember.Route.extend({
           postStream.posts.pushObject(result);
         },
         function(error) {
-          debugger;
+          // TODO - handle errors
+          // debugger;
         });
 
     }
