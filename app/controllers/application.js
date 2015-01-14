@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
+
 export default Ember.Controller.extend({
-	 currentUser: function() {
+  currentUser: function() {
     var userJson = PreloadStore.get('currentUser');
     var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
     if (userJson) {
@@ -11,4 +12,8 @@ export default Ember.Controller.extend({
     }
     return null;
   }.property(),
+  currentSection: function() {
+    var section = this.get('settingsService.currentSection');
+    return section;
+  }.property()
 });
