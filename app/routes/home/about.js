@@ -116,7 +116,7 @@ export default Ember.Route.extend({
   model: function() {
     // var sectionModel = this.modelFor('home');
     // debugger;
-    var apiUrl = "/discette/about";
+    var apiUrl = "/drive/section/about";
     // "/t/" + sectionModel.about_topic.slug + "/" + sectionModel.about_topic.id + ".json";
     var topic = $.getJSON(apiUrl).then(
       function(detailedTopic) {
