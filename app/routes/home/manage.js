@@ -31,7 +31,6 @@ export default Ember.Route.extend({
         data: this.get('controller.newDiscette'),
         method: 'POST'
       });
-      debugger;
       var self = this;
       newDiscettePromise.then(function(result) {
         },
