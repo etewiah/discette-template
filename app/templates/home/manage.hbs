@@ -1,11 +1,87 @@
 <div class="row">
-  <button class='btn btn-primary pull-right' style="" {{action 'startNewTopic' }} title="">
-    <i class="fa fa-plus"></i>New Conversation
-  </button>
 </div>
 <div class="home-title-row row">
-  <h2 id="title">Manage this discourse section</h2>
+  <h2 id="title">Manage sections</h2>
 
 </div>
 
+<h4>Sections:</h4>
+<div class="row">
+  {{#each section in model.sections }}
+  <div>
+    <span>Name:</span> <span>{{ section.name }}</span> 
+    <span>Discette:</span> <span>{{ section.discette_name }}</span> 
+    <span>Subdomain:</span> <span>{{ section.subdomain_lower }}</span> 
+    <span><button class='btn btn-danger' {{action 'deleteSection' section }} style="">
+        Delete
+      </button></span>
+  </div>
+  {{/each}}
+</div>
 
+<div class="row">
+  <form {{action "createNewSection" on="submit" }}>
+    <div style="width: 50%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="">
+          {{input placeholder="" value=controller.newSection.name  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Discette Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newSection.discette_name  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Subdomain:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newSection.subdomain  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+
+    </div>
+     <div class="form-buttons">
+      <button class='btn' {{action 'cancelNewSection' }} style="">
+        Cancel
+      </button>
+      <button class='btn btn-primary' type="submit" title="">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+
+<h4>Discettes:</h4>
+<div class="row">
+  {{#each discette in model.discettes }}
+  <div>
+      <span>Name:</span> <span>{{ discette.name }}</span> 
+    <span>Slug:</span> <span>{{ discette.slug }}</span> 
+    <span>Description:</span> <span>{{ discette.description }}</span> 
+  </div>
+  {{/each}}
+</div>
