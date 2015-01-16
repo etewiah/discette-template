@@ -112,7 +112,7 @@ LogInController = ModalController.extend({
       message: "github message"
     };
     var googleOauth2Params = {
-      name: "google",
+      name: "google_oauth2",
       faClass: "fa-google",
       title: "with Google",
       message: "google message",
