@@ -16,11 +16,35 @@ export default Ember.Route.extend({
   	},
   	deleteSection: function(section){
   		var delete_section_endpoint = '/drive/section/' + section.id;
-      var newSectionPromise = $.ajax(delete_section_endpoint, {
+      var deleteSectionPromise = $.ajax(delete_section_endpoint, {
         method: 'DELETE'
       });
       var self = this;
-      newSectionPromise.then(function(result) {
+      deleteSectionPromise.then(function(result) {
+        },
+        function(error) {
+        });
+  	},
+  	createNewDiscette: function(){
+  		var create_discette_endpoint = '/drive/discette/create';
+      var newDiscettePromise = $.ajax(create_discette_endpoint, {
+        data: this.get('controller.newDiscette'),
+        method: 'POST'
+      });
+      debugger;
+      var self = this;
+      newDiscettePromise.then(function(result) {
+        },
+        function(error) {
+        });
+  	},
+  	deleteDiscette: function(discette){
+  		var delete_discette_endpoint = '/drive/discette/' + discette.id;
+      var deleteDiscettePromise = $.ajax(delete_discette_endpoint, {
+        method: 'DELETE'
+      });
+      var self = this;
+      deleteDiscettePromise.then(function(result) {
         },
         function(error) {
         });
@@ -37,5 +61,6 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('model', model);
     controller.set('newSection', {});
+    controller.set('newDiscette', {});
   }
 });

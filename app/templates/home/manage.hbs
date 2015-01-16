@@ -75,13 +75,73 @@
   </form>
 </div>
 
-<h4>Discettes:</h4>
+<h4 style="margin-top:5%">Discettes:</h4>
 <div class="row">
   {{#each discette in model.discettes }}
   <div>
       <span>Name:</span> <span>{{ discette.name }}</span> 
     <span>Slug:</span> <span>{{ discette.slug }}</span> 
     <span>Description:</span> <span>{{ discette.description }}</span> 
+        <span><button class='btn btn-danger' {{action 'deleteDiscette' discette }} style="">
+        Delete
+      </button></span>
+
   </div>
   {{/each}}
+</div>
+
+<div class="row">
+  <form {{action "createNewDiscette" on="submit" }}>
+    <div style="width: 50%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Discette Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="">
+          {{input placeholder="" value=controller.newDiscette.name  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Slug:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newDiscette.slug  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Description:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newDiscette.description  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+
+    </div>
+     <div class="form-buttons">
+      <button class='btn' {{action 'cancelNewDiscette' }} style="">
+        Cancel
+      </button>
+      <button class='btn btn-primary' type="submit" title="">
+        Save
+      </button>
+    </div>
+  </form>
 </div>
