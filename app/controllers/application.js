@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
     }
     return null;
   }.property(),
+  // below gets passed to discette-header component to be used for displaying section title
   currentSection: function() {
     var section = this.get('settingsService.currentSection');
     return section;

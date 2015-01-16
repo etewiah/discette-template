@@ -89,6 +89,7 @@ export default ModalController.extend({
         title = this.get('topicTitle'),
         categoryId = this.get('controllers.home.category.id');
 
+debugger;
       var newTopicData = {
         "archetype": "discette",
         "raw": firstPost,
