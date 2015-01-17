@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
+  // TODO - get below from settings service like I do with currentSection
   currentUser: function() {
     var userJson = PreloadStore.get('currentUser');
     var rootDomainBaseUrl = this.get('settingsService.currentSection.rootUrl');

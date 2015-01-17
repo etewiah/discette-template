@@ -19,7 +19,7 @@
               </div>
               <div class="input">
                 <div style="">
-                  {{input placeholder="" value=topicTitle id="topic-title" autofocus="autofocus" class="form-control"}} 
+                  {{input placeholder="" value=topicTitle id="topic-title" autofocus="autofocus" class="form-control" tabindex="0" }} 
                   {{input-tip validation=titleValidation}}
                 </div>
               </div>
@@ -31,7 +31,7 @@
                   </label>
                 </div>
               </div>
-              <div class="input">
+              <div>
                 <div class="">
                   {{pagedown-bootstrap height=200 btnSize=bs-sm content=firstPost focus=true }}
                   {{input-tip validation=firstPostValidation}}
