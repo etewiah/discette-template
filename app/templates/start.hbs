@@ -1,0 +1,79 @@
+{{#if controller.isAvailable }}
+
+<section>
+  <div class="row">
+    <div class="col-md-8  col-md-offset-2">
+      <div class="well" style="">
+        <h1 style="color: #090;font-size: 4em;text-align: center;">
+              {{ model.subdomain_lower }} <small style="font-size:0.5em"> is available for a micro-forum</small> </h1>
+
+
+
+<div class="row">
+  <form {{action "claimNewSection" on="submit" }}>
+    <div style="margin: 1%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Display name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="width: 50%;">
+          {{input placeholder="" value=controller.newSection.name  autofocus="autofocus" class="form-control"}} 
+                     {{input-tip validation=nameValidation}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Brief description:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+           {{textarea value=controller.newSection.description class="form-control" autofocus="autofocus"}} 
+           {{input-tip validation=descriptionValidation}}
+           {{input-tip validation=serverErrorValidation}}
+        </div>
+      </div>
+    
+    <div class="form-buttons">
+        <button class='btn btn-primary' style="margin-top:20px;padding:15px;min-width: 300px;font-size:20px" type="submit">
+          <i class="fa fa-plus"></i>Claim this micro-forum
+        </button>
+    </div>
+   </div>
+
+
+  </form>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{{else}}
+<section>
+  <div class="row">
+    <div class="col-md-8  col-md-offset-2">
+      <div class="well" style="margin-bottom:550px;height:200px">
+        <h1 style="color: #090;font-size: 4em;text-align: center;">
+              {{ model.subdomain_lower }} <small style="font-size:0.5em"> is not available</small> </h1>
+      </div>
+    </div>
+  </div>
+</section>
+{{/if}}
+
+
+
+
