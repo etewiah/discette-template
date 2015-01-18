@@ -1,0 +1,31 @@
+<div class="home-title-row row">
+  <h2 id="title">Overview of sections</h2>
+</div>
+
+<div class="row">
+
+<h4>Sections:</h4>
+{{#each section in model.sections }}
+<div class="row">
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Name:</span> <span>{{ section.name }}</span>     
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Subdomain:</span> <span>{{ section.subdomain_lower }}</span> 
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Discette slug:</span> <span>{{ section.discette_slug }}</span> 
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Category slug:</span> <span>{{ section.category_slug }}</span> 
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Category name:</span> <span>{{ section.category_name }}</span> 
+  </div>
+
+  <div class="col-sm-2">
+  </div>
+</div>
+{{/each}}
+
+</div>

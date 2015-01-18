@@ -1,0 +1,189 @@
+<div class="row">
+</div>
+<div class="home-title-row row">
+  <h2 id="title">Manage sections</h2>
+
+</div>
+
+<h4>Sections:</h4>
+{{#each section in model.sections }}
+<div class="row">
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Name:</span> <span>{{ section.name }}</span>     
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Subdomain:</span> <span>{{ section.subdomain_lower }}</span> 
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Discette slug:</span> <span>{{ section.discette_slug }}</span> 
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Category slug:</span> <span>{{ section.category_slug }}</span> 
+  </div>
+  <div class="col-sm-2">
+    <span style="font-weight: bold;">Category name:</span> <span>{{ section.category_name }}</span> 
+  </div>
+
+  <div class="col-sm-2">
+    <span><button class='btn btn-danger' {{action 'deleteSection' section }} style="">
+        Delete
+      </button></span>
+  </div>
+</div>
+{{/each}}
+
+<div class="row">
+  <form {{action "createNewSection" on="submit" }}>
+    <div style="width: 50%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="">
+          {{input placeholder="" value=controller.newSection.name  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Subdomain:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newSection.subdomain  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Discette:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+        {{view "select"
+       content=model.discettes
+       optionValuePath="content.id"
+       optionLabelPath="content.name"
+       selection=newSection.discette}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Category:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+        {{view "select"
+       content=model.categories
+       optionValuePath="content.id"
+       optionLabelPath="content.name"
+       selection=newSection.category}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Users:
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+    
+    <div class="form-buttons">
+      <button class='btn' {{action 'cancelNewSection' }} style="">
+        Cancel
+      </button>
+      <button class='btn btn-primary' type="submit" title="">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+
+<h4 style="margin-top:5%">Discettes:</h4>
+<div class="row">
+  {{#each discette in model.discettes }}
+  <div>
+      <span>Name:</span> <span>{{ discette.name }}</span> 
+    <span>Slug:</span> <span>{{ discette.slug }}</span> 
+    <span>Description:</span> <span>{{ discette.description }}</span> 
+        <span><button class='btn btn-danger' {{action 'deleteDiscette' discette }} style="">
+        Delete
+      </button></span>
+
+  </div>
+  {{/each}}
+</div>
+
+<div class="row">
+  <form {{action "createNewDiscette" on="submit" }}>
+    <div style="width: 50%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Discette Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="">
+          {{input placeholder="" value=controller.newDiscette.name  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Slug:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newDiscette.slug  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Description:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newDiscette.description  autofocus="autofocus" class="form-control"}} 
+        </div>
+      </div>
+
+
+    </div>
+     <div class="form-buttons">
+      <button class='btn' {{action 'cancelNewDiscette' }} style="">
+        Cancel
+      </button>
+      <button class='btn btn-primary' type="submit" title="">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
