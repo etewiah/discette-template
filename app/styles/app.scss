@@ -53,6 +53,12 @@ html, body {
   margin: 20px;
 }
 
+/*for tabs above topics and about page*/
+.site-nav-tabs > li.active > a, .site-nav-tabs> li.active > a:hover, .site-nav-tabs> li.active > a:focus {
+  cursor: pointer;
+}
+
+
 .row{
   margin-top: 10px;
 }
