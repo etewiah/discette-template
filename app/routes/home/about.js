@@ -36,7 +36,7 @@ export default Ember.Route.extend({
       var topic_id = this.controller.get('model.id');
       var category_id = this.controller.get('model.category_id');
       var draft = this.controller.get('model.draft');
-
+debugger;
       var replyData = {
         "raw": draft,
         "topic_id": topic_id,

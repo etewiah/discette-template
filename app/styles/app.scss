@@ -54,6 +54,10 @@ html, body {
   margin: 20px;
 }
 
+.topic-container, .conversations-container, .about-container {
+  max-width: 800px
+}
+
 /*for tabs above topics and about page*/
 .site-nav-tabs > li.active > a, .site-nav-tabs> li.active > a:hover, .site-nav-tabs> li.active > a:focus {
   cursor: pointer;

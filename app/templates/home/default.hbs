@@ -1,44 +1,49 @@
-<div class="row">
-  <button class='btn btn-primary pull-right' style="" {{action 'startNewTopic' }} title="">
-    <i class="fa fa-plus"></i>New Conversation
-  </button>
-</div>
-<div class="row" style="">
-  <div class="" style="">
-    <ul class="nav nav-tabs site-nav-tabs" style="">
-      <li class="active">
-         {{#link-to 'home' }} Conversations {{/link-to}}
-      </li>
-      <li >
-         {{#link-to 'home.about' }} About {{/link-to}}
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-
-
-{{#each topic in model }}
-<div class="section-topic-line">
-  {{#link-to 'topic' topic.id topic.slug }}
-  <div class="section-topic-row">
-    <h3 class="topic-list-title">
-          {{ topic.title }}
-        <small class="pull-right">
-          <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
-          <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
-          <span class="badge-posts">last post: {{ago topic.last_posted_at }}</span>
-        </small>
-        </h3>
-    <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
-
+<div class="conversations-container">
+  <div class="row" style="">
+    <div class="" style="">
+      <ul class="nav nav-tabs site-nav-tabs" style="">
+        <li class="active">
+          {{#link-to 'home' }} Conversations {{/link-to}}
+        </li>
+        <li>
+          {{#link-to 'home.about' }} About {{/link-to}}
+        </li>
+      </ul>
+    </div>
   </div>
 
 
+  <div class="row">
+    <div class="col-md-11 col-sm-12">
+      <span class='btn pull-right' style="" {{action 'startNewTopic' }} title="">
+        <i class="fa fa-plus"></i>New Conversation
+      </span>
+    </div>
+  </div>
 
-  {{/link-to}}
+  <div class="row">
+    <div class="col-md-11 col-sm-12">
+      {{#each topic in model }}
+      <div class="section-topic-line">
+        {{#link-to 'topic' topic.id topic.slug }}
+        <div class="section-topic-row">
+          <h3 class="topic-list-title">
+            {{ topic.title }}
+          <small class="pull-right">
+            <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
+            <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
+            <span class="badge-posts">last post: {{ago topic.last_posted_at }}</span>
+          </small>
+          </h3>
+          <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
+
+        </div>
+        {{/link-to}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+
 
 </div>
-
-{{/each}}

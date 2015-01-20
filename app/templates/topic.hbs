@@ -1,79 +1,83 @@
-<div class="row">
-  <button class='btn btn-primary pull-right' style="" {{action 'startNewTopic' }} title="">
-    <i class="fa fa-plus"></i>New Conversation
-  </button>
-</div>
-<div class="row" style="">
-  <div class="" style="">
-    <ul class="nav nav-tabs site-nav-tabs" style="">
-      <li class="active">
-         {{#link-to 'home' }} Conversations {{/link-to}}
-      </li>
-      <li >
-         {{#link-to 'home.about' }} About {{/link-to}}
-      </li>
-    </ul>
+<div class="topic-container">
+
+  <div class="row" style="">
+    <div class="" style="">
+      <ul class="nav nav-tabs site-nav-tabs" style="">
+        <li class="active">
+          {{#link-to 'home' }} Conversations {{/link-to}}
+        </li>
+        <li>
+          {{#link-to 'home.about' }} About {{/link-to}}
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col-md-11 col-sm-12">
+      <span class='btn pull-right' style="" {{action 'startNewTopic' }} title="">
+        <i class="fa fa-plus"></i>New Conversation
+      </span>
+    </div>
+  </div>
 
 
+  <div class="topic-details">
 
-<div class="topic-details">
-
-  <h1 class="topic-title">{{ model.title }}
+    <h1 class="topic-title">{{ model.title }}
   </h1>
 
-  <div class="container posts">
+    <div class="posts">
 
-    <div class="row">
-      <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
-        <div class='posts-wrapper'>
+      <div class="row">
+        <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
+          <div class='posts-wrapper'>
 
-          {{#each item in model.post_stream.posts }}
-            {{post-details post=item }}
-          {{/each}}
+            {{#each item in model.post_stream.posts }} {{post-details post=item }} {{/each}}
 
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <div class="container">
-    
-
-    {{#if controller.isEditing}}
-    <div class="row reply-row">
-      <div class='col-md-1 hidden-sm'>
-        <h4>Reply:</h4>
-      </div>
-      <div class='col-md-9 col-sm-12'>
-        <div class="pagedown-container bottom-round">
-          {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
-        </div>
-      </div>
-      <div class='col-md-1 col-sm-12'>
-        <div style="margin-top:3%">
-          <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'processReplyToTopic' }} title="">
-            Save
-          </button>
-          <button class='btn' style="" {{action 'cancelReplyToTopic' }} title="">
-            Cancel
-          </button>
-        </div>
+          </div>
+        </section>
       </div>
     </div>
-    <div class="row">
-    </div>
-    {{else}}
-        <div class="row reply-btn-row">
-          <div class='col-md-11'>        
-            <button class='btn btn-primary pull-right' style="" {{action 'startReplyToTopic' }} title="">
-              <i class="fa fa-reply"></i>Reply
+
+    <div class="">
+
+
+      {{#if controller.isEditing}}
+      <div class="row reply-row">
+        <div class='col-md-1 hidden-sm'>
+          <h4>Reply:</h4>
+        </div>
+        <div class='col-md-9 col-sm-12'>
+          <div class="pagedown-container bottom-round">
+            {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
+          </div>
+        </div>
+        <div class='col-md-1 col-sm-12'>
+          <div style="margin-top:3%">
+            <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'processReplyToTopic' }} title="">
+              Save
+            </button>
+            <button class='btn' style="" {{action 'cancelReplyToTopic' }} title="">
+              Cancel
             </button>
           </div>
         </div>
-    {{/if}}
-  </div>
+      </div>
+      <div class="row">
+      </div>
+      {{else}}
+      <div class="row reply-btn-row">
+        <div class='col-md-11'>
+          <button class='btn btn-primary pull-right' style="" {{action 'startReplyToTopic' }} title="">
+            <i class="fa fa-reply"></i>Reply
+          </button>
+        </div>
+      </div>
+      {{/if}}
+    </div>
 
+
+  </div>
 
 </div>

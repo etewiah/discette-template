@@ -1,88 +1,89 @@
-<div class="row" style="">
-  <div class="" style="">
-    <ul class="nav nav-tabs site-nav-tabs" style="">
-      <li>
-        {{#link-to 'home' }} Conversations {{/link-to}}
-      </li>
-      <li class="active">
-        {{#link-to 'home.about' }} About {{/link-to}}
-      </li>
-    </ul>
+<div class="about-container">
+
+  <div class="row" style="">
+    <div class="" style="">
+      <ul class="nav nav-tabs site-nav-tabs" style="">
+        <li>
+          {{#link-to 'home' }} Conversations {{/link-to}}
+        </li>
+        <li class="active">
+          {{#link-to 'home.about' }} About {{/link-to}}
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
 
-
-{{#if controller.isEditingPrimaryPost }}
-<div class="row">
-  <div class='col-sm-12'>
-    {{content-composer minContentLength=2 serverError=controller.primaryPostServerError height=200 btnSize=bs-sm content=controller.primaryPostWithRaw.raw focus=true save='updatePrimaryPost' cancel='cancelPrimaryPostEdit' }}
+  {{#if controller.isEditingPrimaryPost }}
+  <div class="row">
+    <div class='col-sm-12'>
+      {{content-composer minContentLength=2 serverError=controller.primaryPostServerError height=200 btnSize=bs-sm content=controller.primaryPostWithRaw.raw focus=true save='updatePrimaryPost' cancel='cancelPrimaryPostEdit' }}
+    </div>
   </div>
-</div>
 
-{{else}}
-
-  {{section-overview section=controller.settingsService.currentSection currentSection=controller.settingsService.currentSection summaryView=true }}
-<div class="row">
-  <div class='col-md-11'>
-    {{#if controller.primaryPost.can_edit }}
-    <span class='btn pull-right' style="" {{action 'startEditingPrimaryPost' }} title="">
+  {{else}} {{section-overview section=model.section currentSection=controller.settingsService.currentSection summaryView=true }}
+  <div class="row">
+    <div class='col-md-11'>
+      {{#if controller.primaryPost.can_edit }}
+      <span class='btn pull-right' style="" {{action 'startEditingPrimaryPost' }} title="">
       <i class="fa fa-pencil"></i>Edit
-    </span>
-    {{/if}}
-  </div>
-  <section class="topic-area" >
-    <div class='body-page'>
+    </span> {{/if}}
+    </div>
+    <section class="topic-area">
+      <div class='body-page'>
 
-      <div class='col-md-10 col-sm-10 col-xs-12'>
-        <div class='bottom-round contents regular'>
-          <div class="cooked">
-            {{{ controller.primaryPost.cooked }}}
+        <div class='col-md-10 col-sm-10 col-xs-12'>
+          <div class='bottom-round contents regular'>
+            <div class="cooked">
+              {{{ controller.primaryPost.cooked }}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</div>
-{{/if}}
-
-
-
-<div class="row">
- {{#if controller.comments}}
-  <div class='col-md-12'>
-    <h4>Comments:</h4>
-  </div>
-  <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
-    <div class='posts-wrapper'>
-
-      {{#each item in controller.comments }} {{post-details post=item }} {{/each}}
-
-    </div>
-  </section>
- {{/if}}
-</div>
-
-
-<div class="container">
-
-
-  {{#if controller.isCommenting}}
-
-  <div class="row">
-    <div class='col-sm-12'>
-      {{content-composer minContentLength=20 serverError=controller.commentServerError height=200 btnSize=bs-sm content=model.draft focus=true save='processSectionComment' cancel='cancelReplyToTopic' }}
-    </div>
-  </div>
-
-
-  {{else}}
-  <div class="row reply-btn-row">
-    <div class='col-md-11'>
-      <button class='btn btn-primary pull-right' style="" {{action 'startCommentOnSection' }} title="">
-        <i class="fa fa-reply"></i>Comment
-      </button>
-    </div>
+    </section>
   </div>
   {{/if}}
+
+
+
+  <div class="row">
+    {{#if controller.comments}}
+    <div class='col-md-12'>
+      <h4>Comments:</h4>
+    </div>
+    <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
+      <div class='posts-wrapper'>
+
+        {{#each item in controller.comments }} {{post-details post=item }} {{/each}}
+
+      </div>
+    </section>
+    {{/if}}
+  </div>
+
+
+  <div class="">
+
+
+    {{#if controller.isCommenting}}
+
+    <div class="row">
+      <div class='col-sm-12'>
+        {{content-composer minContentLength=20 serverError=controller.commentServerError height=200 btnSize=bs-sm content=model.draft focus=true 
+        save='processSectionComment' cancel='cancelReplyToTopic' }}
+      </div>
+    </div>
+
+
+    {{else}}
+    <div class="row reply-btn-row">
+      <div class='col-md-11'>
+        <button class='btn btn-primary pull-right' style="" {{action 'startCommentOnSection' }} title="">
+          <i class="fa fa-reply"></i>Comment
+        </button>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+
 </div>
