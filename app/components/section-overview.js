@@ -26,7 +26,8 @@ export default Ember.Component.extend({
     }
   }.property('sectionOwner'),
   sectionOwner: function() {
-    if (this.get('section.section_users')[0]) {
+    // debugger;
+    if (this.get('section.section_users') && this.get('section.section_users')[0]) {
       return this.get('section.section_users')[0];
     }
   }.property('section'),

@@ -13,7 +13,7 @@ export default Ember.Route.extend({
       if (currentUser) {
         this.controller.set('isEditingPrimaryPost', true);
         this.controller.set('isCommenting', false);
-        var postApiUrl = "/posts/" + this.controller.get('primaryPost.id')+ ".json";
+        var postApiUrl = "/posts/" + this.controller.get('primaryPost.id') + ".json";
         var that = this;
         var post = $.getJSON(postApiUrl).then(
           function(detailedPost) {
@@ -114,17 +114,18 @@ export default Ember.Route.extend({
     }
   },
   model: function() {
-    // var sectionModel = this.modelFor('home');
-    // debugger;
     var apiUrl = "/drive/section/about";
-    // "/t/" + sectionModel.about_topic.slug + "/" + sectionModel.about_topic.id + ".json";
-    var topic = $.getJSON(apiUrl).then(
-      function(detailedTopic) {
-        return detailedTopic;
+    var result = $.getJSON(apiUrl).then(
+      function(aboutJson) {
+        return aboutJson;
       });
-    return topic;
+    return result;
   },
   setupController: function(controller, model) {
+    if (model.section_status && model.section_status === "unclaimed") {
+      this.transitionTo('start');
+    }
+    // TODO - move above to before model which checks preloaded json
     controller.set('model', model);
     controller.set('isCommenting', false);
   }
