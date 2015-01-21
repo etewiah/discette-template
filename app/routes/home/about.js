@@ -1,3 +1,4 @@
+import Post from '../../models/post';
 // import Ember from 'ember';
 
 export default Ember.Route.extend({
@@ -46,7 +47,6 @@ export default Ember.Route.extend({
       // if (EmberENV.useApiKeys) {
       //   // replyData.apiKey = this.get('settingsService.apiKey');
       //   // replyData.apiUsername = this.get('settingsService.apiUsername');
-      //   debugger;
       // }
 
       var create_post_endpoint = '/posts';
@@ -59,7 +59,7 @@ export default Ember.Route.extend({
       reply.then(function(result) {
           that.controller.set('isCommenting', false);
           var comments = that.controller.get('comments');
-          comments.pushObject(result);
+          comments.pushObject(Post.create(result));
         },
         function(error) {
           var errorMessage = "Sorry, there has been an error.";

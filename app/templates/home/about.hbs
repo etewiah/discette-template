@@ -55,7 +55,7 @@
     <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
       <div class='posts-wrapper'>
 
-        {{#each item in controller.comments }} {{post-details  openModalAction='openModal' post=item }} {{/each}}
+        {{#each item in controller.comments }} {{post-details  openModalAction='openModal' postModel=item }} {{/each}}
 
       </div>
     </section>
