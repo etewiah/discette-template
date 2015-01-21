@@ -8,6 +8,30 @@ var Post = Ember.Object.extend({
   cookedContent: function() {
     return this.get('cooked');
   }.property('cooked'),
+  destroy: function(complete, error) {
+    var self = this;
+
+    // return Discourse.ajax("/posts/" + this.get('id'), {
+    //   data: { context: window.location.pathname },
+    //   type: 'DELETE'
+    // });
+
+    return $.ajax("/posts/" + (this.get('id')), {
+      type: 'DELETE',
+      dataType: 'json'
+    }).then(function(result) {
+      if (complete) complete(result);
+    }, function(result) {
+      // seems to get here on success...
+      if (result.status === 200) {
+        if (complete) complete(result);
+      } else{
+        if (error) error(result);
+      };
+    });
+
+
+  },
   save: function(complete, error) {
     // var tt = PostObject.create({});
     // debugger;
@@ -32,7 +56,7 @@ var Post = Ember.Object.extend({
         // if (result.category) Discourse.Site.current().updateCategory(result.category);
         // if (complete) complete(PostObject.create(result.post))
         // not quite sure how I'd get a ref to this same base obj to use above
-        if(complete) complete(result.post);
+        if (complete) complete(result.post);
       }, function(result) {
         // Post failed to update
         if (error) error(result)

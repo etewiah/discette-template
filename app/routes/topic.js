@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import ENV from '../config/environment';
-import Topic from '../models/topic';
 // not quite sure how to access above..
+import Topic from '../models/topic';
+import Post from '../models/post';
 
 export default Ember.Route.extend({
   actions: {
@@ -33,7 +34,7 @@ export default Ember.Route.extend({
       var replyData = {
         "raw": draft,
         "topic_id": topic_id,
-        "archetype": "regular",
+        "archetype": "discette",
         "category": category_id
       };
 
@@ -50,13 +51,14 @@ export default Ember.Route.extend({
       });
       var that = this;
       reply.then(function(result) {
-          // console.log(that);
-          var postStream = that.controller.get('model.post_stream');
-          postStream.posts.pushObject(result);
+          var postModels = that.controller.get('postModels');
+          // var postStreamPosts = that.controller.get('model.post_stream.posts');
+          // postStreamPosts.pushObject(result);
+          postModels.pushObject(Post.create(result));
         },
         function(error) {
           // TODO - handle errors
-          // debugger;
+          debugger;
         });
 
     }

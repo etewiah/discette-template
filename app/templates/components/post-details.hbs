@@ -1,3 +1,4 @@
+{{#if isVisible}}
 <div class='topic-post'>
   <article {{bind-attr class=":boxed via_email" id="postElementId" data-post-id="id" data-user-id="user_id" }}>
     <div class='row'>
@@ -48,3 +49,5 @@
 
 
 </div>
+
+{{/if}}

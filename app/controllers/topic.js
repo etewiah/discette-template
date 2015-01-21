@@ -12,5 +12,5 @@ export default Ember.Controller.extend({
       }
     );
     return postModels;
-  }.property('model'),
+  }.property('model.post_stream.posts'),
 });
