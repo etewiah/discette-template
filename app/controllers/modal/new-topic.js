@@ -38,10 +38,10 @@ export default ModalController.extend({
       });
     }
     // If too short
-    if (this.get('firstPost').length < 10) {
+    if (this.get('firstPost').length < 15) {
       return Ember.Object.create({
         failed: true,
-        reason: "Has to be at least 10 characters long."
+        reason: "Has to be at least 15 characters long."
       });
     }
 
@@ -80,7 +80,7 @@ export default ModalController.extend({
     //   debugger;
     // },
     createNewTopic: function() {
-      if (this.get('topicTitle').length < 5 || this.get('firstPost').length < 10) {
+      if (this.get('topicTitle').length < 5 || this.get('firstPost').length < 15) {
         this.set('validate', true);
         return;
       }

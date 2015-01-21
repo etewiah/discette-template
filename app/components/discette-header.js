@@ -5,14 +5,18 @@ var originalZIndex;
 export default Ember.Component.extend({
   actions: {
     showSignUp: function() {
-      //setting this cookie ensures I will be redirected here after signup
+      //not so sure destination_url works with sign-up
+      // in discourse login controller, it gets passed to hidden login form for redirection - in create-account controller it doesn't get passed
       $.cookie('destination_url', location.href);
       var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
       window.location = rootDomainBaseUrl + "/signup";
     },
     showLogIn: function() {
-      // this.controllerFor('modal/add_site').set('model', this.controller.model);
-      this.sendAction('openModal', 'modal/log_in');
+      // this.sendAction('openModal', 'modal/log_in');
+      //setting this cookie ensures I will be redirected here after signup
+      $.cookie('destination_url', location.href);
+      var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
+      window.location = rootDomainBaseUrl + "/login";
     },
     logout: function() {
       // Discourse implements this in the user model - I should do that myself too
