@@ -33,10 +33,9 @@ export default Ember.Route.extend({
       }
     },
     processSectionComment: function() {
-      var topic_id = this.controller.get('model.id');
-      var category_id = this.controller.get('model.category_id');
+      var topic_id = this.controller.get('model.topic.id');
+      var category_id = this.controller.get('model.topic.category_id');
       var draft = this.controller.get('model.draft');
-debugger;
       var replyData = {
         "raw": draft,
         "topic_id": topic_id,
@@ -72,8 +71,8 @@ debugger;
 
     },
     updatePrimaryPost: function() {
-      var topic_id = this.controller.get('model.id');
-      var category_id = this.controller.get('model.category_id');
+      var topic_id = this.controller.get('model.topic.id');
+      var category_id = this.controller.get('model.topic.category_id');
       var updatedPost = this.controller.get('primaryPostWithRaw.raw');
 
       var replyData = {

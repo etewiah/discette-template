@@ -22,6 +22,15 @@
   </div>
 
   <div class="row">
+    {{#if noTopics}}
+    <div class="col-md-11 col-sm-12 well">
+    <h4>
+            There are no conversations yet in this micro-forum. 
+    </h4>
+            <span {{action 'startNewTopic'}} class="btn">Get the ball rolling by <a> starting a new conversation</a> </span class="btn">
+
+    </div>
+    {{else}}
     <div class="col-md-11 col-sm-12">
       {{#each topic in model }}
       <div class="section-topic-line">
@@ -42,6 +51,7 @@
       </div>
       {{/each}}
     </div>
+    {{/if}}
   </div>
 
 

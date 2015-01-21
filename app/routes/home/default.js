@@ -14,6 +14,9 @@ export default Ember.Route.extend({
       controller.set('model', []);
     } else {
       controller.set('model', model.discette_topics);
+      if (model.discette_topics.length < 1) {
+        controller.set('noTopics', true);
+      };
       // controller.set('aboutTopic', model.about_topic);
       // should be safe to remove below:
       controller.set('category', model.category);
