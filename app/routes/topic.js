@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ENV from '../config/environment';
+import Topic from '../models/topic';
 // not quite sure how to access above..
 
 export default Ember.Route.extend({
@@ -71,7 +72,8 @@ export default Ember.Route.extend({
     return topic;
   },
   setupController: function(controller, model) {
-    // controller.set('model', model.get('data'));
+    //TODO - create topic from topic model
+    // var topic = Topic.create(model);
     controller.set('model', model);
     controller.set('isEditing', false);
   }

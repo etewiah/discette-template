@@ -5,12 +5,12 @@
       <div class='topic-meta-data topic-avatar col-md-1 col-sm-2 col-xs-12'>
 
         <div class="contents">
-          <a {{bind-attr href="usernameUrl" data-user-card="post.username" }} classnames="trigger-user-card main-avatar">
-            <img width="45" height="45" {{bind-attr src="avatarUrl" title="post.username" }} class="avatar">
+          <a {{bind-attr href="usernameUrl" data-user-card="postModel.username" }} classnames="trigger-user-card main-avatar">
+            <img width="45" height="45" {{bind-attr src="avatarUrl" title="postModel.username" }} class="avatar">
           </a>
         </div>
         <div class="poster-name pull-left">
-          {{ post.name post.user_name }}
+          {{ postModel.name postModel.user_name }}
         </div>
 
       </div>
@@ -20,20 +20,20 @@
           <div class='bottom-round contents regular'>
 
             <div class='post-info pull-right'>
-              <span class="relative-date" {{bind-attr title="longCreatedAt" }} data-format="tiny">{{ago post.created_at }} </span> {{!-- TODO: enable bellow --}}
+              <span class="relative-date" {{bind-attr title="longCreatedAt" }} data-format="tiny">{{ago postModel.created_at }} </span> {{!-- TODO: enable bellow --}}
               <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number" }}>
               </a>
             </div>
             <div class="cooked">
-              {{{ post.cooked }}}
+              {{{ postModel.cookedContent }}}
             </div>
-           {{#if post.can_delete }}
+           {{#if postModel.can_delete }}
               <span class='btn pull-right' style="" {{action 'startDeletingPost' }} title="">
                 <i class="fa fa-trash"></i>Delete
               </span> 
             {{/if}}
 
-            {{#if post.can_edit }}
+            {{#if postModel.can_edit }}
               <span class='btn pull-right' style="" {{action 'startEditingPost' }} title="">
                 <i class="fa fa-pencil"></i>Edit
               </span> 

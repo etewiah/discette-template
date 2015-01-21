@@ -33,7 +33,8 @@
         <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
           <div class='posts-wrapper'>
 
-            {{#each item in model.post_stream.posts }} {{post-details  openModalAction='openModal' post=item }} {{/each}}
+            {{#each postModel in controller.postModels }} {{post-details  openModalAction='openModal' 
+            postModel=postModel }} {{/each}}
 
           </div>
         </section>
