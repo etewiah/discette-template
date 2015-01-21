@@ -12,7 +12,7 @@ export default Ember.Component.extend({
       window.location = rootDomainBaseUrl + "/signup";
     },
     showLogIn: function() {
-      // this.sendAction('openModal', 'modal/log_in');
+      // this.sendAction('openModalAction', 'modal/log_in');
       //setting this cookie ensures I will be redirected here after signup
       $.cookie('destination_url', location.href);
       var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';

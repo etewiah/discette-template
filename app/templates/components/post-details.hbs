@@ -24,10 +24,20 @@
               <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number" }}>
               </a>
             </div>
-
             <div class="cooked">
               {{{ post.cooked }}}
             </div>
+           {{#if post.can_delete }}
+              <span class='btn pull-right' style="" {{action 'startDeletingPost' }} title="">
+                <i class="fa fa-trash"></i>Delete
+              </span> 
+            {{/if}}
+
+            {{#if post.can_edit }}
+              <span class='btn pull-right' style="" {{action 'startEditingPost' }} title="">
+                <i class="fa fa-pencil"></i>Edit
+              </span> 
+            {{/if}}
 
           </div>
         </div>

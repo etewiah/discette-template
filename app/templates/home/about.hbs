@@ -26,8 +26,9 @@
     <div class='col-md-11'>
       {{#if controller.primaryPost.can_edit }}
       <span class='btn pull-right' style="" {{action 'startEditingPrimaryPost' }} title="">
-      <i class="fa fa-pencil"></i>Edit
-    </span> {{/if}}
+        <i class="fa fa-pencil"></i>Edit
+      </span> 
+      {{/if}}
     </div>
     <section class="topic-area">
       <div class='body-page'>
@@ -54,7 +55,7 @@
     <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
       <div class='posts-wrapper'>
 
-        {{#each item in controller.comments }} {{post-details post=item }} {{/each}}
+        {{#each item in controller.comments }} {{post-details  openModalAction='openModal' post=item }} {{/each}}
 
       </div>
     </section>

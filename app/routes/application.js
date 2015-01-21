@@ -10,7 +10,10 @@ ApplicationRoute = Ember.Route.extend({
     }
   },
   actions: {
-    openModal: function(modal) {
+    openModal: function(modal, model) {
+      if (model) {
+        this.controllerFor(modal).set('model', model);
+      }
       return this.render(modal, {
         into: 'application',
         outlet: 'modal'

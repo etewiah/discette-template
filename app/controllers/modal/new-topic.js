@@ -2,7 +2,7 @@ import ModalController from '../modal';
 // import Ember from 'ember';
 
 export default ModalController.extend({
-  needs: ['home'],
+  // needs: ['home'],
 
   // onShow: function() {
   //   var defaultGeo = {

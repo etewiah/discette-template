@@ -1,7 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
+  actions: {
+    startDeletingPost: function(){
+      // this.controllerFor('modal/edit_post').set('model', this.post);
+      // passing a model below means it gets set as the modal's model
+      // debugger;
+      this.sendAction('openModalAction', 'modal/confirm-action');
+    },
+    startEditingPost: function(){
+      this.sendAction('openModalAction', 'modal/edit-post', this.post);
+    },
+    updatePost: function(){
+      debugger;
+    }
+  },
   longCreatedAt: function(){
     return moment(this.post.created_at).format('MMMM Do YYYY, h:mm:ss a');
   }.property(),

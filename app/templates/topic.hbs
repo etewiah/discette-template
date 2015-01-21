@@ -33,7 +33,7 @@
         <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
           <div class='posts-wrapper'>
 
-            {{#each item in model.post_stream.posts }} {{post-details post=item }} {{/each}}
+            {{#each item in model.post_stream.posts }} {{post-details  openModalAction='openModal' post=item }} {{/each}}
 
           </div>
         </section>
@@ -45,15 +45,15 @@
 
       {{#if controller.isEditing}}
       <div class="row reply-row">
-        <div class='col-md-1 hidden-sm'>
-          <h4>Reply:</h4>
+        <div style="margin-bottom: 2%;" class='col-sm-12'>
+          <h4>Your Reply:</h4>
         </div>
-        <div class='col-md-9 col-sm-12'>
+        <div class='col-md-10 col-sm-12'>
           <div class="pagedown-container bottom-round">
             {{pagedown-bootstrap height=200 btnSize=bs-sm content=model.draft focus=true }}
           </div>
         </div>
-        <div class='col-md-1 col-sm-12'>
+        <div class='col-md-2 col-sm-12'>
           <div style="margin-top:3%">
             <button class='btn btn-primary' style="width: 100%;margin-bottom:10px;" {{action 'processReplyToTopic' }} title="">
               Save
