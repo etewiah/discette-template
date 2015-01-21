@@ -20,14 +20,20 @@ var Post = Ember.Object.extend({
       type: 'DELETE',
       dataType: 'json'
     }).then(function(result) {
-      if (complete) complete(result);
+      if (complete) {
+        complete(result);
+      }
     }, function(result) {
       // seems to get here on success...
       if (result.status === 200) {
-        if (complete) complete(result);
-      } else{
-        if (error) error(result);
-      };
+        if (complete) {
+          complete(result);
+        }
+      } else {
+        if (error) {
+          error(result);
+        }
+      }
     });
 
 
@@ -56,10 +62,14 @@ var Post = Ember.Object.extend({
         // if (result.category) Discourse.Site.current().updateCategory(result.category);
         // if (complete) complete(PostObject.create(result.post))
         // not quite sure how I'd get a ref to this same base obj to use above
-        if (complete) complete(result.post);
+        if (complete) {
+          complete(result.post);
+        }
       }, function(result) {
         // Post failed to update
-        if (error) error(result)
+        if (error) {
+          error(result);
+        }
       });
 
 

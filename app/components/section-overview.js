@@ -4,8 +4,7 @@ export default Ember.Component.extend({
 
   sectionUrl: function() {
     var subdomainLower = this.get('section.subdomain_lower');
-    return this.get('currentSection.root_url').replace('://',"://" + subdomainLower + ".")
-    // return  + ".klavado.com"
+    return this.get('currentSection.root_url').replace('://',"://" + subdomainLower + ".");
   }.property('section'),
   avatarUrl: function() {
     if (this.get('sectionOwner')) {

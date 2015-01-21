@@ -15,7 +15,6 @@ export default ModalController.extend({
           self.send('closeModal');
         },
         function(error) {
-          debugger;
           // self.set('serverError', error.responseJSON.errors[0]);
           var errorMessage = "Sorry, there has been an error.";
           if (error.responseJSON && error.responseJSON.errors) {

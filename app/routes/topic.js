@@ -58,7 +58,6 @@ export default Ember.Route.extend({
         },
         function(error) {
           // TODO - handle errors
-          debugger;
         });
 
     }

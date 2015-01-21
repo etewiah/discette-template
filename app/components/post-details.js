@@ -37,7 +37,7 @@ export default Ember.Component.extend({
     }
   },
   longCreatedAt: function() {
-    return moment(this.postModel.created_at).format('MMMM Do YYYY, h:mm:ss a');
+    return window.moment(this.postModel.created_at).format('MMMM Do YYYY, h:mm:ss a');
   }.property(),
   avatarUrl: function() {
     var avatarUrl = "http://klavado.com" + this.postModel.avatar_template.replace(/\{size\}/g, '45');

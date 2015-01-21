@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
       if (post.post_number !== 1) {
         comments.push(post);
       }
-    })
+    });
     return comments;
   }.property('model')
 });
