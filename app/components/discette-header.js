@@ -12,11 +12,11 @@ export default Ember.Component.extend({
       window.location = rootDomainBaseUrl + "/signup";
     },
     showLogIn: function() {
-      // this.sendAction('openModalAction', 'modal/log_in');
+      this.sendAction('showLogInAction');
       //setting this cookie ensures I will be redirected here after signup
-      $.cookie('destination_url', location.href);
-      var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
-      window.location = rootDomainBaseUrl + "/login";
+      // $.cookie('destination_url', location.href);
+      // var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
+      // window.location = rootDomainBaseUrl + "/login";
     },
     logout: function() {
       // Discourse implements this in the user model - I should do that myself too

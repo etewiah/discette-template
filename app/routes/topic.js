@@ -11,7 +11,7 @@ export default Ember.Route.extend({
       if (currentUser) {
         this.send('openModal', 'modal/new_topic');
       } else {
-        this.send('openModal', 'modal/log_in');
+        this.send('showLogIn');
       }
     },
     cancelReplyToTopic: function() {
@@ -22,7 +22,7 @@ export default Ember.Route.extend({
       if (currentUser) {
         this.controller.set('isEditing', true);
       } else{
-        this.send('openModal', 'modal/log_in');
+        this.send('showLogIn');
       }
     },
     processReplyToTopic: function() {

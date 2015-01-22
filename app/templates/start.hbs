@@ -38,7 +38,7 @@
                 </div>
               </div>
 
-              <div class="form-buttons">
+              <div class="form-buttons"  style="text-align: center;">
                 <button class='btn btn-primary' style="margin-top:20px;padding:15px;min-width: 300px;font-size:20px" type="submit">
                   <i class="fa fa-plus"></i>Claim this micro-forum
                 </button>
@@ -48,7 +48,7 @@
         </div>
       {{else}}
         <div class="form-buttons" style="text-align: center;">
-          <button class='btn btn-primary' style="margin-top:20px;padding:15px;min-width: 300px;font-size:20px" {{action 'openModal' 'modal/log_in'}}>
+          <button class='btn btn-primary' style="margin-top:20px;padding:15px;min-width: 300px;font-size:20px" {{action 'showLogIn'}}>
             <i class="fa"></i>Log-in to claim this micro-forum
           </button>
         </div>

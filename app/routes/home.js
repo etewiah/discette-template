@@ -12,7 +12,7 @@ export default Ember.Route.extend({
       if (currentUser) {
         this.send('openModal', 'modal/new_topic');
       } else {
-        this.send('openModal', 'modal/log_in');
+        this.send('showLogIn');
       }
     }
   },

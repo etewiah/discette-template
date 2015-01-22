@@ -24,7 +24,15 @@ ApplicationRoute = Ember.Route.extend({
         outlet: 'modal',
         parentView: 'application'
       });
+    },
+    showLogIn: function() {
+      // this.sendAction('openModalAction', 'modal/log_in');
+      //setting this cookie ensures I will be redirected here after signup
+      $.cookie('destination_url', location.href);
+      var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
+      window.location = rootDomainBaseUrl + "/login";
     }
+
   }
 });
 

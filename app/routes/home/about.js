@@ -21,7 +21,7 @@ export default Ember.Route.extend({
             that.controller.set('primaryPostWithRaw', detailedPost);
           });
       } else {
-        this.send('openModal', 'modal/log_in');
+        this.send('showLogIn');
       }
     },
     startCommentOnSection: function() {
@@ -30,7 +30,7 @@ export default Ember.Route.extend({
         this.controller.set('isCommenting', true);
         this.controller.set('isEditingPrimaryPost', false);
       } else {
-        this.send('openModal', 'modal/log_in');
+        this.send('showLogIn');
       }
     },
     processSectionComment: function() {
