@@ -1,18 +1,9 @@
 {{#if summaryView}}
   
   <div class="row">
-      <div class='topic-meta-data topic-avatar col-md-1 col-sm-2 col-xs-12'>
-
-        <div class="contents">
-          <a {{bind-attr href="usernameUrl" data-user-card="sectionOwner.username" }} classnames="trigger-user-card main-avatar">
-            <img width="45" height="45" {{bind-attr src="avatarUrl" title="sectionOwner.username" }} class="avatar">
-          </a>
-        </div>
-        <div class="poster-name pull-left">
-          {{ sectionOwner.username}}
-        </div>
-
-      </div>
+    <div class="faded" >
+      This Mini-Forum was created on {{ createdAt  }} by <a {{bind-attr href="usernameUrl" data-user-card="sectionOwner.username" }} classnames="trigger-user-card main-avatar">{{ sectionOwner.name }}</a>
+    </div>
   </div>
 
   {{else}}

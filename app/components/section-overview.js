@@ -19,6 +19,13 @@ export default Ember.Component.extend({
       return usernameUrl;
     }
   }.property('sectionOwner'),
+  createdAt: function() {
+    // TODO - fix this after I add timestamps server side
+    if (this.get('sectionOwner')) {
+      var createdAt = this.get('sectionOwner.created_at');
+      return window.moment(createdAt).format('MMMM Do YYYY');
+    }
+  }.property('sectionOwner'),
   sectionOwner: function() {
     // debugger;
     // TODO: fix this:
