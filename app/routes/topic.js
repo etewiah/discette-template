@@ -5,6 +5,9 @@ import Topic from '../models/topic';
 import Post from '../models/post';
 
 export default Ember.Route.extend({
+  titleToken: function(){
+    return this.controller.get('model.title');
+  },
   actions: {
     startNewTopic: function() {
       var currentUser = this.controllerFor('application').get('currentUser');

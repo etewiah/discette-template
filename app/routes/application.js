@@ -3,6 +3,14 @@ import Ember from 'ember';
 var ApplicationRoute;
 
 ApplicationRoute = Ember.Route.extend({
+  title: function(tokens) {
+    var sectionName = this.controller.get('currentSection.name');
+    if (tokens && tokens.length > 0) {
+      return tokens.join('-') + ' - ' + sectionName;
+    } else{
+      return sectionName;
+    }
+  },
   beforeModel: function() {
     // debugger;
     if (!EmberENV.disableCSRF) {
