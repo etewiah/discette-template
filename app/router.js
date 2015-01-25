@@ -5,19 +5,19 @@ import config from "./config/environment";
 // Extend Ember.Route to add support for sensible
 // document.title integration.
 Ember.Route.reopen({
- 
+
   // `titleToken` can either be a static string or a function
   // that accepts a model object and returns a string (or array
   // of strings if there are multiple tokens).
   titleToken: null,
- 
+
   // `title` can either be a static string or a function
   // that accepts an array of tokens and returns a string
   // that will be the document title. The `collectTitleTokens` action
   // stops bubbling once a route is encountered that has a `title`
   // defined.
   title: null,
- 
+
   // Provided by Ember
   _actions: {
     collectTitleTokens: function(tokens) {
@@ -25,13 +25,13 @@ Ember.Route.reopen({
       if (typeof this.titleToken === 'function') {
         titleToken = this.titleToken(this.currentModel);
       }
- 
+
       if (Ember.isArray(titleToken)) {
         tokens.unshift.apply(this, titleToken);
       } else if (titleToken) {
         tokens.unshift(titleToken);
       }
- 
+
       // If `title` exists, it signals the end of the
       // token-collection, and the title is decided right here.
       if (this.title) {
@@ -43,7 +43,7 @@ Ember.Route.reopen({
           // title just sledgehammer overwrites any children tokens.
           finalTitle = this.title;
         }
- 
+
         // Stubbable fn that sets document.title
         this.router.setTitle(finalTitle);
       } else {
@@ -53,12 +53,12 @@ Ember.Route.reopen({
     }
   }
 });
- 
+
 Ember.Router.reopen({
   updateTitle: function() {
     this.send('collectTitleTokens', []);
   }.on('didTransition'),
- 
+
   setTitle: function(title) {
     if (Ember.testing) {
       this._title = title;
@@ -74,28 +74,29 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route("start");
-  this.route("micro-forums")
+  this.route("micro-forums");
   // this.route("about-section");
   // this.route("manage-section");
 
   this.resource("overview", {
-    path: "overview"
+    path: "directory"
   }, function() {
     this.route("default", {
       path: "/"
     });
-    this.resource("overview.mgmt", {
-      path: "mgmt"
-    }, function() {
-      this.route("default", {
-        path: "/"
-      });
-      this.route("sections", {
-        path: "/sections"
-      });
-      this.route("discettes", {
-        path: "/discettes"
-      });
+  });
+
+  this.resource("drive-admin", {
+    path: "drive-admin"
+  }, function() {
+    this.route("default", {
+      path: "/"
+    });
+    this.route("sections", {
+      path: "/sections"
+    });
+    this.route("discettes", {
+      path: "/discettes"
     });
   });
 
