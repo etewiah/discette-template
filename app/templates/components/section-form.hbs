@@ -1,0 +1,130 @@
+{{#if section}}
+
+<h4>Edit Section:</h4>
+
+  <form {{action "updateSection" on="submit" }}>
+    <div style="width: 50%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="">
+          {{input placeholder="" value=section.name autofocus="autofocus" class="form-control"}} {{input-tip validation=nameValidation}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Subdomain Lower:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=section.subdomain_lower autofocus="autofocus" class="form-control"}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Discette:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{view "select" content=controller.discettes optionValuePath="content.id" optionLabelPath="content.name" selection=section.discette}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Category Id:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{view "select" content=model.categories optionValuePath="content.id" optionLabelPath="content.name" selection=section.category}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Users:
+          </label>
+        </div>
+      </div>
+
+      <div class="tip bad">{{ serverError }}</div>
+      <div class="tip good">{{ successMessage }}</div>
+
+    </div>
+
+    <div class="form-buttons">
+      <button class='btn btn-primary' type="submit" title="">
+        Update
+      </button>
+      <button class='btn btn-danger' {{action 'deleteSection' section }} style="">
+        Delete
+      </button>
+    </div>
+  </form>
+
+
+  {{else}}
+
+<div class='section-overview'>
+  <article {{bind-attr class=":boxed via_email" id="postElementId" data-post-id="id" data-user-id="user_id" }}>
+    <div class='row'>
+
+      <div class='topic-meta-data topic-avatar col-md-1 col-sm-2 col-xs-12'>
+
+        <div class="contents">
+          <a {{bind-attr href="usernameUrl" data-user-card="sectionOwner.username" }} classnames="trigger-user-card main-avatar">
+            <img width="45" height="45" {{bind-attr src="avatarUrl" title="sectionOwner.username" }} class="avatar">
+          </a>
+        </div>
+        <div class="poster-name pull-left">
+          {{ sectionOwner.username}}
+        </div>
+
+      </div>
+
+      <div class='col-md-10 col-sm-10 col-xs-12'>
+        <a {{bind-attr href="sectionUrl" }} >
+          <div class="row">
+            <div class="col-sm-4">
+              <h5 style="font-weight: bold;">{{ section.name }}</h5> {{ sectionUrl }} 
+            </div>
+            <div class="col-sm-2">
+              <span style="font-weight: bold;">Discette slug:</span> <span>{{ section.discette_slug }}</span>
+            </div>
+            <div class="col-sm-2">
+              <span style="font-weight: bold;">Category slug:</span> <span>{{ section.category_slug }}</span>
+            </div>
+            <div class="col-sm-2">
+              <span style="font-weight: bold;">Category name:</span> <span>{{ section.category_name }}</span>
+            </div>
+
+            <div class="col-sm-2">
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </article>
+</div>
+
+
+{{/if}}

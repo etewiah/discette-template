@@ -1,8 +1,5 @@
 var Section = Ember.Object.extend({
-  saveNew: function(complete, error) {
-  	// var data = {
-   //    	subdomain: "subd..."
-   //    };
+  createOnServer: function(complete, error) {
     var data = JSON.parse(JSON.stringify(this) );
     var create_section_endpoint = '/drive/admin/section';
     return $.ajax(create_section_endpoint, {
@@ -19,19 +16,18 @@ var Section = Ember.Object.extend({
       }
     });
   },
-  update: function(complete, error) {
+  updateOnServer: function(complete, error) {
     var self = this;
-    debugger;
-    return $.ajax(create_section_endpoint, {
+    var data = JSON.parse(JSON.stringify(this) );
+    var update_section_endpoint = '/drive/admin/section/' + this.id;
+
+    return $.ajax(update_section_endpoint, {
       type: 'PUT',
       dataType: 'json',
-      data: this
+      data: data
     }).then(function(result) {
-      debugger;
-      // if (complete) complete(PostObject.create(result.post))
-      // not quite sure how I'd get a ref to this same base obj to use above
       if (complete) {
-        complete(result.post);
+        complete(result);
       }
     }, function(result) {
       // Post failed to update
