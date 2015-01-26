@@ -92,8 +92,15 @@ Router.map(function() {
     this.route("default", {
       path: "/"
     });
-    this.route("sections", {
+    this.resource("drive-admin.sections", {
       path: "/sections"
+    }, function(){
+      this.route("default",{
+        path: "/"
+      });
+      this.route("details",{
+        path: "/:id"
+      });
     });
     this.route("discettes", {
       path: "/discettes"

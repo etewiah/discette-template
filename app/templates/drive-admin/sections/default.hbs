@@ -1,0 +1,74 @@
+  <form {{action "createNewSection" on="submit" }}>
+    <div style="width: 50%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="">
+          {{input placeholder="" value=controller.newSection.name autofocus="autofocus" class="form-control"}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Subdomain:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=newSection.subdomain autofocus="autofocus" class="form-control"}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Discette:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{view "select" content=model.discettes optionValuePath="content.id" optionLabelPath="content.name" selection=newSection.discette}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Category:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{view "select" content=model.categories optionValuePath="content.id" optionLabelPath="content.name" selection=newSection.category}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Users:
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="form-buttons">
+      <button class='btn' {{action 'cancelNewSection' }} style="">
+        Cancel
+      </button>
+      <button class='btn btn-primary' type="submit" title="">
+        Save
+      </button>
+    </div>
+  </form>

@@ -1,11 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  actions: {
 
-  },
   model: function(params) {
-    var apiUrl = "/drive/section/directory";
+    var apiUrl = "/drive/admin/section/" + params.id;
     var topics = $.getJSON(apiUrl).then(
       function(result) {
         return result;
@@ -14,7 +12,9 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('model', model);
-    controller.set('newSection', {});
-    controller.set('newDiscette', {});
+    var discettes = this.modelFor('drive-admin').discettes;
+    controller.set('discettes',discettes);
   }
+
 });
+

@@ -1,119 +1,44 @@
 <div class="row" style="">
-
   <div class="" style="">
     <ul class="nav nav-tabs site-nav-tabs" style="">
       <li class="active">
-         {{#link-to 'drive-admin.sections' }} Manage sections {{/link-to}}
+        {{#link-to 'drive-admin.sections' }} Manage sections {{/link-to}}
       </li>
       <li>
-         {{#link-to 'drive-admin.discettes' }} Manage discettes {{/link-to}}
+        {{#link-to 'drive-admin.discettes' }} Manage discettes {{/link-to}}
       </li>
 
     </ul>
   </div>
-
 </div>
 
-
-<h4>Sections:</h4> {{#each section in model.sections }}
 <div class="row">
-  <div class="col-sm-2">
-    <span style="font-weight: bold;">Name:</span> <span>{{ section.name }}</span>
-  </div>
-  <div class="col-sm-2">
-    <span style="font-weight: bold;">Subdomain:</span> <span>{{ section.subdomain_lower }}</span>
-  </div>
-  <div class="col-sm-2">
-    <span style="font-weight: bold;">Discette slug:</span> <span>{{ section.discette_slug }}</span>
-  </div>
-  <div class="col-sm-2">
-    <span style="font-weight: bold;">Category slug:</span> <span>{{ section.category_slug }}</span>
-  </div>
-  <div class="col-sm-2">
-    <span style="font-weight: bold;">Category name:</span> <span>{{ section.category_name }}</span>
-  </div>
 
-  <div class="col-sm-2">
-    <span><button class='btn btn-danger' {{action 'deleteSection' section }} style="">
-        Delete
-      </button></span>
-  </div>
-</div>
-{{/each}}
-
-<div class="row">
-  <form {{action "createNewSection" on="submit" }}>
-    <div style="width: 50%;" class="form-group">
-      <div>
-        <div style="" class="">
-          <label for='topic-title'>
-            Name:
-          </label>
-        </div>
+  <div class="col-sm-6">
+    <h4>Sections:</h4> {{#each section in model.sections }} {{#link-to 'drive-admin.sections.details' section.id }}
+    <div class="row">
+      <div class="col-sm-2">
+        <span style="font-weight: bold;">Name:</span> <span>{{ section.name }}</span>
       </div>
-      <div class="input">
-        <div style="">
-          {{input placeholder="" value=controller.newSection.name autofocus="autofocus" class="form-control"}}
-        </div>
+      <div class="col-sm-2">
+        <span style="font-weight: bold;">Subdomain:</span> <span>{{ section.subdomain_lower }}</span>
       </div>
-
-      <div class="" style="margin-top: 15px;">
-        <div>
-          <label>
-            Subdomain:
-          </label>
-        </div>
+      <div class="col-sm-2">
+        <span style="font-weight: bold;">Discette slug:</span> <span>{{ section.discette_slug }}</span>
       </div>
-      <div class="input">
-        <div class="">
-          {{input placeholder="" value=newSection.subdomain autofocus="autofocus" class="form-control"}}
-        </div>
+      <div class="col-sm-2">
+        <span style="font-weight: bold;">Category slug:</span> <span>{{ section.category_slug }}</span>
       </div>
-
-      <div class="" style="margin-top: 15px;">
-        <div>
-          <label>
-            Discette:
-          </label>
-        </div>
+      <div class="col-sm-2">
+        <span style="font-weight: bold;">Category name:</span> <span>{{ section.category_name }}</span>
       </div>
-      <div class="input">
-        <div class="">
-          {{view "select" content=model.discettes optionValuePath="content.id" optionLabelPath="content.name" selection=newSection.discette}}
-        </div>
-      </div>
-
-      <div class="" style="margin-top: 15px;">
-        <div>
-          <label>
-            Category:
-          </label>
-        </div>
-      </div>
-      <div class="input">
-        <div class="">
-          {{view "select" content=model.categories optionValuePath="content.id" optionLabelPath="content.name" selection=newSection.category}}
-        </div>
-      </div>
-
-      <div class="" style="margin-top: 15px;">
-        <div>
-          <label>
-            Users:
-          </label>
-        </div>
-      </div>
-
 
     </div>
+    {{/link-to}} {{/each}}
+  </div>
 
-    <div class="form-buttons">
-      <button class='btn' {{action 'cancelNewSection' }} style="">
-        Cancel
-      </button>
-      <button class='btn btn-primary' type="submit" title="">
-        Save
-      </button>
-    </div>
-  </form>
+  <div class="col-sm-6">
+    {{outlet}}
+  </div>
+
 </div>
