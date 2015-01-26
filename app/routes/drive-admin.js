@@ -1,11 +1,16 @@
 import Ember from 'ember';
 import Section from '../models/section';
+import Discette from '../models/discette';
 
 
 export default Ember.Route.extend({
   actions: {
     sectionCreateSuccess: function(section){
       debugger;
+      this.transitionTo('drive-admin.sections.details', section.id);
+    },
+    discetteCreateSuccess: function(discette){
+      this.transitionTo('drive-admin.discettes.details', discette.id);
     },
     deleteSection: function(section) {
       var delete_section_endpoint = '/drive/admin/section/' + section.id;
@@ -16,16 +21,16 @@ export default Ember.Route.extend({
       deleteSectionPromise.then(function(result) {},
         function(error) {});
     },
-    createNewDiscette: function() {
-      var create_discette_endpoint = '/drive/admin/discette/create';
-      var newDiscettePromise = $.ajax(create_discette_endpoint, {
-        data: this.get('controller.newDiscette'),
-        method: 'POST'
-      });
-      var self = this;
-      newDiscettePromise.then(function(result) {},
-        function(error) {});
-    },
+    // createNewDiscette: function() {
+    //   var create_discette_endpoint = '/drive/admin/discette/create';
+    //   var newDiscettePromise = $.ajax(create_discette_endpoint, {
+    //     data: this.get('controller.newDiscette'),
+    //     method: 'POST'
+    //   });
+    //   var self = this;
+    //   newDiscettePromise.then(function(result) {},
+    //     function(error) {});
+    // },
     deleteDiscette: function(discette) {
       var delete_discette_endpoint = '/drive/admin/discette/' + discette.id;
       var deleteDiscettePromise = $.ajax(delete_discette_endpoint, {
@@ -49,6 +54,8 @@ export default Ember.Route.extend({
     controller.set('newSection', Section.create({
       isNew: true
     }));
-    controller.set('newDiscette', {});
+    controller.set('newDiscette', Discette.create({
+      isNew: true
+    }));
   }
 });

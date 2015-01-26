@@ -102,8 +102,15 @@ Router.map(function() {
         path: "/:id"
       });
     });
-    this.route("discettes", {
+    this.resource("drive-admin.discettes", {
       path: "/discettes"
+    }, function(){
+      this.route("default",{
+        path: "/"
+      });
+      this.route("details",{
+        path: "/:id"
+      });
     });
   });
 

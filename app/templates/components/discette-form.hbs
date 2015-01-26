@@ -1,0 +1,73 @@
+{{#if discette.isNew}}
+ <h4>Create Discette:</h4>
+  {{else}}
+ <h4>Edit Discette:</h4>
+{{/if}}
+  <form>
+
+    <div style="width: 50%;" class="form-group">
+      <div>
+        <div style="" class="">
+          <label for='topic-title'>
+            Discette Name:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div style="">
+          {{input placeholder="" value=discette.name autofocus="autofocus" class="form-control"}} {{input-tip validation=nameValidation}}
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Slug:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=discette.slug autofocus="autofocus" class="form-control"}}
+        </div>
+      </div>
+
+
+      <div class="" style="margin-top: 15px;">
+        <div>
+          <label>
+            Description:
+          </label>
+        </div>
+      </div>
+      <div class="input">
+        <div class="">
+          {{input placeholder="" value=discette.description autofocus="autofocus" class="form-control"}}
+        </div>
+      </div>
+
+
+    </div>
+
+
+{{#if discette.isNew}}
+  <div class="form-buttons">
+    <button class='btn btn-primary'  {{action "createDiscette" }}>
+      Create
+    </button>
+  </div>
+
+  {{else}}
+    <div class="form-buttons">
+      <button class='btn btn-primary'  {{action "updateDiscette" }}>
+        Update
+      </button>
+      <button class='btn btn-danger' {{action 'deleteDiscette' discette }} style="">
+        Delete
+      </button>
+    </div>
+{{/if}}
+
+
+  </form>
+
