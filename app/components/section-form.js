@@ -9,12 +9,11 @@ export default Ember.Component.extend({
         this.set('validate', true);
         return;
       }
-      var sectionJSON = this.get('section');
-      var sectionModel = Section.create(sectionJSON);
+      var sectionModel = this.get('section');
+      // var sectionModel = Section.create(sectionJSON);
       var self = this;
       sectionModel.createOnServer(function(result) {
-          self.sendAction('onCreateSuccessAction');
-          // self.transitionToRoute('drive-admin.sections.details', result.id);
+          self.sendAction('onCreateSuccessAction', result);
         },
         function(error) {
           // self.set('serverError', error.responseJSON.errors[0]);

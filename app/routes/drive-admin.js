@@ -4,6 +4,9 @@ import Section from '../models/section';
 
 export default Ember.Route.extend({
   actions: {
+    sectionCreateSuccess: function(section){
+      debugger;
+    },
     deleteSection: function(section) {
       var delete_section_endpoint = '/drive/admin/section/' + section.id;
       var deleteSectionPromise = $.ajax(delete_section_endpoint, {
@@ -43,7 +46,9 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('model', model);
-    controller.set('newSection', {});
+    controller.set('newSection', Section.create({
+      isNew: true
+    }));
     controller.set('newDiscette', {});
   }
 });
