@@ -1,17 +1,9 @@
 import Ember from 'ember';
+import Section from '../models/section';
+
 
 export default Ember.Route.extend({
   actions: {
-    createNewSection: function() {
-      var create_section_endpoint = '/drive/admin/section/create';
-      var newSectionPromise = $.ajax(create_section_endpoint, {
-        data: this.get('controller.newSection'),
-        method: 'POST'
-      });
-      var self = this;
-      newSectionPromise.then(function(result) {},
-        function(error) {});
-    },
     deleteSection: function(section) {
       var delete_section_endpoint = '/drive/admin/section/' + section.id;
       var deleteSectionPromise = $.ajax(delete_section_endpoint, {
