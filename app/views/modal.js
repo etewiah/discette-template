@@ -1,8 +1,4 @@
 import Ember from 'ember';
-export default Ember.View.extend({
-});
-
-import Ember from 'ember';
 var ModalView;
 
 ModalView = Ember.View.extend({
