@@ -6,7 +6,6 @@ import Discette from '../models/discette';
 export default Ember.Route.extend({
   actions: {
     sectionCreateSuccess: function(section){
-      debugger;
       this.transitionTo('drive-admin.sections.details', section.id);
     },
     discetteCreateSuccess: function(discette){
