@@ -6,16 +6,16 @@ var Discette = Ember.Object.extend({
       this.get('meta.files.js').forEach( function(fileName){
         files.push({
           name: fileName
-        })
-      })
-    };
+        });
+      });
+    }
     if (this.get('meta.files.css')) {
       this.get('meta.files.css').forEach( function(fileName){
         files.push({
           name: fileName
-        })
-      })
-    };
+        });
+      });
+    }
     return files;
   }.property(),
 
