@@ -12,34 +12,28 @@ export default Ember.Route.extend({
     discetteCreateSuccess: function(discette){
       this.transitionTo('drive-admin.discettes.details', discette.id);
     },
-    deleteSection: function(section) {
-      var delete_section_endpoint = '/drive/admin/section/' + section.id;
-      var deleteSectionPromise = $.ajax(delete_section_endpoint, {
-        method: 'DELETE'
-      });
-      var self = this;
-      deleteSectionPromise.then(function(result) {},
-        function(error) {});
-    },
-    // createNewDiscette: function() {
-    //   var create_discette_endpoint = '/drive/admin/discette/create';
-    //   var newDiscettePromise = $.ajax(create_discette_endpoint, {
-    //     data: this.get('controller.newDiscette'),
-    //     method: 'POST'
+    discetteDeleteSuccess: function(){
+      this.transitionTo('drive-admin.discettes.default');
+    }
+
+    // deleteSection: function(section) {
+    //   var delete_section_endpoint = '/drive/admin/section/' + section.id;
+    //   var deleteSectionPromise = $.ajax(delete_section_endpoint, {
+    //     method: 'DELETE'
     //   });
     //   var self = this;
-    //   newDiscettePromise.then(function(result) {},
+    //   deleteSectionPromise.then(function(result) {},
     //     function(error) {});
     // },
-    deleteDiscette: function(discette) {
-      var delete_discette_endpoint = '/drive/admin/discette/' + discette.id;
-      var deleteDiscettePromise = $.ajax(delete_discette_endpoint, {
-        method: 'DELETE'
-      });
-      var self = this;
-      deleteDiscettePromise.then(function(result) {},
-        function(error) {});
-    }
+    // deleteDiscette: function(discette) {
+    //   var delete_discette_endpoint = '/drive/admin/discette/' + discette.id;
+    //   var deleteDiscettePromise = $.ajax(delete_discette_endpoint, {
+    //     method: 'DELETE'
+    //   });
+    //   var self = this;
+    //   deleteDiscettePromise.then(function(result) {},
+    //     function(error) {});
+    // }
   },
   model: function(params) {
     var apiUrl = "/drive/admin/sections";

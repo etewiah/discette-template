@@ -19,16 +19,25 @@
 <div class="row">
 
   <div class="col-sm-6">
-    <h4>Discettes:</h4> {{#each discette in model.discettes }} {{#link-to 'drive-admin.discettes.details' discette.id }}
+    <h4>Discettes:</h4> 
 
+    {{#each discette in model.discettes }} 
+    {{#link-to 'drive-admin.discettes.details' discette.id }}
+    <div class="row">
+      <div class="col-sm-3">
+      <h5>{{ discette.name }}</h5>
+      </div>
+      <div class="col-sm-3">
+        <span style="font-weight: bold;">Slug:</span> <span>{{ discette.slug }}</span>
+      </div>
+      <div class="col-sm-4">
+        <span style="font-weight: bold;">Description:</span> <span>{{ discette.description }}</span>
+      </div>
 
-  <div>
-    <span>Name:</span> <span>{{ discette.name }}</span>
-    <span>Slug:</span> <span>{{ discette.slug }}</span>
-    <span>Description:</span> <span>{{ discette.description }}</span>
-  </div>
+    </div>
+    {{/link-to}} 
+    {{/each}}
 
-    {{/link-to}} {{/each}}
   </div>
 
   <div class="col-sm-6">

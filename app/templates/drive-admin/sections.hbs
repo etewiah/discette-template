@@ -15,7 +15,9 @@
 <div class="row">
 
   <div class="col-sm-6">
-    <h4>Sections:</h4> {{#each section in model.sections }} {{#link-to 'drive-admin.sections.details' section.id }}
+    <h4>Sections:</h4> 
+    {{#each section in model.sections }} 
+    {{#link-to 'drive-admin.sections.details' section.id }}
     <div class="row">
       <div class="col-sm-2">
         <span style="font-weight: bold;">Name:</span> <span>{{ section.name }}</span>
@@ -34,7 +36,8 @@
       </div>
 
     </div>
-    {{/link-to}} {{/each}}
+    {{/link-to}} 
+    {{/each}}
   </div>
 
   <div class="col-sm-6">

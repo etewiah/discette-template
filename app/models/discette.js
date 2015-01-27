@@ -31,6 +31,23 @@ var Discette = Ember.Object.extend({
         complete(result);
       }
     }, function(result) {
+      if (error) {
+        error(result);
+      }
+    });
+  },
+  destroyOnServer: function(complete, error) {
+    var self = this;
+    // var data = JSON.parse(JSON.stringify(this) );
+    var delete_discette_endpoint = '/drive/admin/discette/' + this.id;
+
+    return $.ajax(delete_discette_endpoint, {
+      type: 'DELETE'
+    }).then(function(result) {
+      if (complete) {
+        complete(result);
+      }
+    }, function(result) {
       // Post failed to update
       if (error) {
         error(result);

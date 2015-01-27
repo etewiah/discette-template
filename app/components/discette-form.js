@@ -1,9 +1,34 @@
 import Ember from 'ember';
-import Discette from '../models/discette';
+// import Discette from '../models/discette';
 
 export default Ember.Component.extend({
   validate: false,
   actions: {
+    deleteDiscette: function() {
+     var confirmationObject = Ember.Object.create({
+        displayText: "Are you sure you want to delete this discette?"
+      });
+      confirmationObject.reopen({
+        confirm: function(modal) {
+          var discetteModel = this.get('discette');
+          var self = this;
+          discetteModel.destroyOnServer(function(result) {
+              modal.send('closeModal');
+              self.sendAction('onDeleteSuccessAction', result);
+            },
+            function(error) {
+              var errorMessage = "Sorry, there has been an error.";
+              if (error.responseJSON && error.responseJSON.errors) {
+                errorMessage = error.responseJSON.errors[0];
+              }
+              modal.flash(errorMessage, 'error');
+              modal.set('validate', false);
+            }
+          );
+        }.bind(this)
+      });
+      this.sendAction('openModalAction', 'modal/confirm-action', confirmationObject);
+    },
     createDiscette: function() {
       if (this.get('discette.name').length < 3) {
         this.set('validate', true);
@@ -30,9 +55,7 @@ export default Ember.Component.extend({
         this.set('validate', true);
         return;
       }
-      var discetteJSON = this.get('discette');
-      var discetteModel = Discette.create(discetteJSON);
-      debugger;
+      var discetteModel = this.get('discette');
       var self = this;
       discetteModel.updateOnServer(function(result) {
           self.set('successMessage', "discette updated successfully.");
@@ -75,23 +98,4 @@ export default Ember.Component.extend({
     });
   }.property('validate', 'discette.name'),
 
-  // usernameUrl: function() {
-  //   if (this.get('discetteOwner')) {
-  //     var usernameUrl = "/users/" + this.get('discetteOwner.username');
-  //     return usernameUrl;
-  //   }
-  // }.property('discetteOwner'),
-  // createdAt: function() {
-  //   // TODO - fix this after I add timestamps server side
-  //   if (this.get('discetteOwner')) {
-  //     var createdAt = this.get('discetteOwner.created_at');
-  //     return window.moment(createdAt).format('MMMM Do YYYY');
-  //   }
-  // }.property('discetteOwner'),
-  // discetteOwner: function() {
-  //   // TODO: fix this:
-  //   if (this.get('discette.discette_users') && this.get('discette.discette_users')[0]) {
-  //     return this.get('discette.discette_users')[0];
-  //   }
-  // }.property('discette'),
 });
