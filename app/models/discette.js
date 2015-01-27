@@ -1,5 +1,24 @@
 var Discette = Ember.Object.extend({
   name: "",
+  files: function(){
+    var files = [];
+    if (this.get('meta.files.js')) {
+      this.get('meta.files.js').forEach( function(fileName){
+        files.push({
+          name: fileName
+        })
+      })
+    };
+    if (this.get('meta.files.css')) {
+      this.get('meta.files.css').forEach( function(fileName){
+        files.push({
+          name: fileName
+        })
+      })
+    };
+    return files;
+  }.property(),
+
   createOnServer: function(complete, error) {
     var data = JSON.parse(JSON.stringify(this) );
     var create_discette_endpoint = '/drive/admin/discette';

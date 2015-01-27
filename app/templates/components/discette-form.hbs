@@ -74,14 +74,22 @@
 <div>
   <div style="" class="">
     <label >
-      Discette Name:
+      Sections using this discette:
     </label>
   </div>
   <div style="">
-    {{ discette.name }}
-
   {{#each section in discette.sections }}
     {{section-overview section=section }}
+  {{/each}}
+  </div>
+  <div style="" class="">
+    <label >
+      Files in this discette:
+    </label>
+  </div>
+  <div style="">
+  {{#each file in discette.files }}
+    <label>{{ file.name }}</label>
   {{/each}}
   </div>
 </div>
