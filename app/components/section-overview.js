@@ -1,14 +1,17 @@
 import Ember from 'ember';
+import Section from '../models/section';
 
 export default Ember.Component.extend({
 
   sectionUrl: function() {
     var subdomainLower = this.get('section.subdomain_lower');
-    return this.get('currentSection.root_url').replace('://',"://" + subdomainLower + ".");
+    var rootDomainUrl = Section.getRootDomainUrl();
+    return rootDomainUrl.replace('://', "://" + subdomainLower + ".");
   }.property('section'),
   avatarUrl: function() {
     if (this.get('sectionOwner')) {
-      var avatarUrl = this.get('currentSection.root_url') + this.get('sectionOwner.avatar_template').replace(/\{size\}/g, '45');
+      var rootDomainUrl = Section.getRootDomainUrl();
+      var avatarUrl = rootDomainUrl + this.get('sectionOwner.avatar_template').replace(/\{size\}/g, '45');
       // "/users/" + this.get('sectionOwner.username');
       return avatarUrl;
     }

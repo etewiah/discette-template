@@ -38,17 +38,11 @@ var Section = Ember.Object.extend({
   }
 });
 
-// Section.reopenClass({
-//   getRootUrl: function(collection, klass) {
-//     var retval = {};
-//     if (Ember.isEmpty(collection)) { return retval; }
-
-//     collection.forEach(function(item) {
-//       retval[item.id] = klass.create(item);
-//     });
-//     return retval;
-//   }
-// });
+Section.reopenClass({
+  getRootDomainUrl: function() {
+    return PreloadStore.get('currentSection').root_url || "http://klavado.com";
+  }
+});
 
 
 
