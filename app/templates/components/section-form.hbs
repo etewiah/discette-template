@@ -40,7 +40,7 @@
       </div>
       <div class="input">
         <div class="">
-          {{view "select" content=discettes optionValuePath="content.id" optionLabelPath="content.name" selection=currentDiscette}}
+          {{view "select" content=discettes optionValuePath="content.id" optionLabelPath="content.name" value=section.discette_id }}
         </div>
       </div>
       <div>
@@ -51,13 +51,13 @@
       <div class="" style="margin-top: 15px;">
         <div>
           <label>
-            Category Id:
+            Category:
           </label>
         </div>
       </div>
       <div class="input">
         <div class="">
-          {{view "select" content=model.categories optionValuePath="content.id" optionLabelPath="content.name" selection=section.category}}
+        {{ section.category.name }}
         </div>
       </div>
 

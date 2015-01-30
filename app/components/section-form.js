@@ -59,7 +59,6 @@ export default Ember.Component.extend({
       // var sectionJSON = this.get('section');
       var sectionModel = this.get('section');
       // Section.create(sectionJSON);
-      debugger;
       var self = this;
       sectionModel.updateOnServer(function(result) {
           self.set('successMessage', "section updated successfully.");
@@ -103,12 +102,13 @@ export default Ember.Component.extend({
   }.property('validate', 'section.name'),
 
   currentDiscette: function() {
+    var currentDiscette = {};
     var discettes = this.get('discettes');
     if (discettes) {
-      var currentDiscette = discettes.findBy('id', this.get('section.discette_id'));
-      return currentDiscette;
+      currentDiscette = discettes.findBy('id', this.get('section.discette_id'));
     }
-  }.property('section.discette_id', 'discettes'),
+    return currentDiscette;
+  }.property('section', 'section.discette_id', 'discettes'),
   createdAt: function() {
     // TODO - fix this after I add timestamps server side
     if (this.get('sectionOwner')) {
