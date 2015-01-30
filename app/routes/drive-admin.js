@@ -13,26 +13,10 @@ export default Ember.Route.extend({
     },
     discetteDeleteSuccess: function(){
       this.transitionTo('drive-admin.discettes.default');
+    },
+    sectionDeleteSuccess: function(){
+      this.transitionTo('drive-admin.sections.default');
     }
-
-    // deleteSection: function(section) {
-    //   var delete_section_endpoint = '/drive/admin/section/' + section.id;
-    //   var deleteSectionPromise = $.ajax(delete_section_endpoint, {
-    //     method: 'DELETE'
-    //   });
-    //   var self = this;
-    //   deleteSectionPromise.then(function(result) {},
-    //     function(error) {});
-    // },
-    // deleteDiscette: function(discette) {
-    //   var delete_discette_endpoint = '/drive/admin/discette/' + discette.id;
-    //   var deleteDiscettePromise = $.ajax(delete_discette_endpoint, {
-    //     method: 'DELETE'
-    //   });
-    //   var self = this;
-    //   deleteDiscettePromise.then(function(result) {},
-    //     function(error) {});
-    // }
   },
   model: function(params) {
     var apiUrl = "/drive/admin/sections";

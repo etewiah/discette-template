@@ -1,4 +1,5 @@
 import Ember from 'ember';
+// not calling below Discette to avoid clashing with global Discette
 import Disc from '../../../models/discette';
 
 export default Ember.Route.extend({
@@ -14,8 +15,6 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     var disc = Disc.create(model.discette);
     controller.set('model', disc);
-    // var discettes = this.modelFor('drive-admin').discettes;
-    // controller.set('discettes',discettes);
   }
 
 });

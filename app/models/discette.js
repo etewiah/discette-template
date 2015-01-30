@@ -57,7 +57,6 @@ var Discette = Ember.Object.extend({
   },
   destroyOnServer: function(complete, error) {
     var self = this;
-    // var data = JSON.parse(JSON.stringify(this) );
     var delete_discette_endpoint = '/drive/admin/discette/' + this.id;
 
     return $.ajax(delete_discette_endpoint, {
@@ -67,7 +66,6 @@ var Discette = Ember.Object.extend({
         complete(result);
       }
     }, function(result) {
-      // Post failed to update
       if (error) {
         error(result);
       }

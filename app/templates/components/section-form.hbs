@@ -40,8 +40,12 @@
       </div>
       <div class="input">
         <div class="">
-          {{view "select" content=controller.discettes optionValuePath="content.id" optionLabelPath="content.name" selection=section.discette}}
+          {{view "select" content=discettes optionValuePath="content.id" optionLabelPath="content.name" selection=currentDiscette}}
         </div>
+      </div>
+      <div>
+        {{ currentDiscette.name }}
+        {{ currentDiscette.description }}
       </div>
 
       <div class="" style="margin-top: 15px;">
@@ -63,6 +67,9 @@
             Users:
           </label>
         </div>
+        {{#each user in section.users }}
+          {{ user.name }}  ( {{ user.role }} )
+        {{/each}}
       </div>
 
       <div class="tip bad">{{ serverError }}</div>

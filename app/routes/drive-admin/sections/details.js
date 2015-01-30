@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Section from '../../../models/section';
 
 export default Ember.Route.extend({
 
@@ -11,7 +12,8 @@ export default Ember.Route.extend({
     return topics;
   },
   setupController: function(controller, model) {
-    controller.set('model', model);
+    var section = Section.create(model.section);
+    controller.set('model', section);
     var discettes = this.modelFor('drive-admin').discettes;
     controller.set('discettes',discettes);
   }
