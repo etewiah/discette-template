@@ -75,7 +75,8 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route("start");
   this.route("micro-forums");
-  // this.route("about-section");
+  // below is rather specific to the directory discette:
+  this.route("discourse-sites");
   // this.route("manage-section");
 
   this.resource("overview", {

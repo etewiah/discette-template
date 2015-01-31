@@ -59,9 +59,21 @@ module.exports = function(environment) {
   ENV.contentSecurityPolicy = {
     'img-src': "*",
     // below is needed for preloadstore stuff to work:
-    'script-src': "'self' 'unsafe-inline'", 
-    'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com"
+    'script-src': "'self' 'unsafe-inline' ", 
+    'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
+    // below for retrieving remote data:
+    // 'connect-src': "'self' https://meta.discourse.org http://klavado.com http://custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
   }
 
+  // ENV.contentSecurityPolicy = {
+  //   'default-src': "'none'",
+  //   'script-src': "'self' http://meta.discourse.org http://klavado.com", // Allow scripts from https://cdn.mxpnl.com
+  //   'font-src': "'self' http://fonts.gstatic.com", // Allow fonts to be loaded from http://fonts.gstatic.com
+  //   'connect-src': "'self' http://meta.discourse.org http://klavado.com http://custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
+  //   // 'img-src': "'self'",
+  //   'img-src': "*",
+  //   'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
+  //   'media-src': "'self'"
+  // }
   return ENV;
 };
