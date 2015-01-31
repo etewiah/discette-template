@@ -7,7 +7,7 @@ ApplicationRoute = Ember.Route.extend({
     var sectionName = this.controller.get('currentSection.name');
     if (tokens && tokens.length > 0) {
       return tokens.join('-') + ' - ' + sectionName;
-    } else{
+    } else {
       return sectionName;
     }
   },
@@ -39,7 +39,17 @@ ApplicationRoute = Ember.Route.extend({
       $.cookie('destination_url', location.href);
       var rootDomainBaseUrl = PreloadStore.get('discetteSettings.rootDomainBaseUrl') || 'http://klavado.com';
       window.location = rootDomainBaseUrl + "/login";
-    }
+    },
+    // error: function(error, transition) {
+    //   if (error && error.status === 401) {
+    //     // error substate and parent routes do not handle this error
+    //     // return this.replaceWith('invalidAccess');
+    //     // return this.transitionTo('modelNotFound');
+    //   }
+
+    //   // Return true to bubble this event to any parent route.
+    //   return true;
+    // }
 
   }
 });
