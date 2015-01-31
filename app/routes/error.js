@@ -11,7 +11,7 @@ export default Ember.Route.extend({
         model.errorMessage = "You are not authorized to view this page";
       } else {
         if (model.responseJSON && model.responseJSON.errors) {
-          model.errorMessage = error.responseJSON.errors[0];
+          model.errorMessage = model.responseJSON.errors[0];
         }
       }
       controller.set('model', model);
