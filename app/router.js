@@ -79,7 +79,7 @@ Router.map(function() {
   // this.route("discourse-sites");
   // should below be sold as a directory or a reader???
   this.resource('discourse-sites', {
-    path: 'discourse-sites'
+    path: 'reader'
   }, function() {
     this.route('default', {
       path: '/'
@@ -91,7 +91,14 @@ Router.map(function() {
         path: '/'
       });
       this.resource('discourse-sites.site.topic', {
-        path: '/:id'
+        path: '/t/:topic_id'
+      }, function() {
+        this.route('default', {
+          path: '/'
+        });
+      });
+      this.resource('discourse-sites.site.category', {
+        path: '/c/:cat_id'
       }, function() {
         this.route('default', {
           path: '/'

@@ -16,6 +16,19 @@ var Site = Ember.Object.extend({
   //     }
   //   });
   // },
+  getTopic: function(topic_id) {
+    var slug = this.get('slug');
+    var apiUrl = "/passthrough/topic_details.json";
+    var data = {
+      slug: slug,
+      topic_id: topic_id
+    };
+    return $.ajax(apiUrl, {
+      type: 'GET',
+      dataType: 'json',
+      data: data
+    })
+  },
   getLatestTopics: function() {
     // var host = this.get('host');
     var slug = this.get('slug');
