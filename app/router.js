@@ -75,9 +75,23 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route("start");
   this.route("micro-forums");
-  // below is rather specific to the directory discette:
-  this.route("discourse-sites");
-  // this.route("manage-section");
+
+  // this.route("discourse-sites");
+// should below be sold as a directory or a reader???
+  this.resource('discourse-sites', {
+    path: 'discourse-sites'
+  }, function() {
+    this.route('default', {
+      path: '/'
+    });
+    this.resource('discourse-sites.site', {
+      path: '/:slug'
+    }, function() {
+      this.route('default', {
+        path: '/'
+      });
+    });
+  });
 
   this.resource("overview", {
     path: "directory"

@@ -18,9 +18,8 @@ var Site = Ember.Object.extend({
   // },
   getLatestTopics: function() {
     var host = this.get('host');
-     // "https://meta.discourse.org";
+    // "https://meta.discourse.org";
     var apiUrl = "/passthrough/latest.json";
-
     var data = {
       host: host
     };
@@ -28,6 +27,16 @@ var Site = Ember.Object.extend({
       type: 'GET',
       dataType: 'json',
       data: data
+    })
+  }
+});
+
+Site.reopenClass({
+  getAll: function() {
+    var apiUrl = "/discourse_sites/get_sites.json";
+    return $.ajax(apiUrl, {
+      type: 'GET',
+      dataType: 'json'
     })
   }
 });

@@ -2,16 +2,14 @@ import Ember from 'ember';
 import Site from '../models/site';
 
 export default Ember.Route.extend({
-  model: function(params) {
-    var siteModel = Site.create({
-      host: "https://talk.birmingham.io"
-    });
-    var topics = siteModel.getLatestTopics().then(function(result) {
+  model: function() {
+    var sites = Site.getAll().then(function(result) {
       return result;
     }, function(error) {});
-    return topics;
+    return sites;
   },
   setupController: function(controller, model) {
+    debugger;
     controller.set('model', model);
   }
 });

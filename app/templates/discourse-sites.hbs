@@ -1,21 +1,22 @@
-
 <div>
-        {{#each topic in model.topic_list.topics }}
-      <div class="section-topic-line">
-        {{#link-to 'topic' topic.id topic.slug }}
-        <div class="section-topic-row">
-          <h3 class="topic-list-title">
-            {{ topic.title }}
-          <small class="pull-right">
-            <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
-            <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
-            <span class="badge-posts">last post: {{ago topic.last_posted_at }}</span>
-          </small>
-          </h3>
-          <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
-
-        </div>
-        {{/link-to}}
-      </div>
-      {{/each}}
+  <h3>Discourse sites     <button class="btn btn-primary pull-right" {{action showAddSiteModal}}>Add a discourse site</button>
+ </h3>
 </div>
+
+<div class="row offline-topics">
+  <div class="col-md-3">
+    <div class="bs-sidebar hidden-print affix-top" role="complementary">
+
+      <ul class="nav nav-pills nav-stacked">
+        {{#each site in model }} {{#link-to 'discourse-sites.site' site.slug tagName="li" class="topic-nav-item" }}
+        <a {{bind-attr href="view.href" }}>{{ site.display_name }}</a> {{/link-to}} {{/each}}
+      </ul>
+
+    </div>
+  </div>
+  <div class="col-md-9" role="main">
+    {{ outlet }}
+  </div>
+</div>
+
+
