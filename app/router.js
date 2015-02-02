@@ -90,6 +90,9 @@ Router.map(function() {
       this.route('default', {
         path: '/'
       });
+      this.route('about', {
+        path: '/about'
+      });
       this.resource('discourse-sites.site.topic', {
         path: '/t/:topic_id'
       }, function() {

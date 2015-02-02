@@ -1,10 +1,14 @@
-<div>
-  <h3>Discourse sites     <button class="btn btn-primary pull-right" {{action showAddSiteModal}}>Add a discourse site</button>
- </h3>
-</div>
-
 <div class="row offline-topics">
-  <div class="col-md-3">
+  <div class="col-md-2 col-sm-3">
+
+  <div class="row">
+    <div class="col-md-12">
+      <span class='btn' style="" {{action 'showAddSiteModal' }} title="">
+        <i class="fa fa-plus"></i>Add Site
+      </span>
+    </div>
+  </div>
+
     <div class="bs-sidebar hidden-print affix-top" role="complementary">
 
       <ul class="nav nav-pills nav-stacked">
@@ -14,7 +18,7 @@
 
     </div>
   </div>
-  <div class="col-md-9" role="main">
+  <div class="col-md-10 col-sm-9" role="main">
     {{ outlet }}
   </div>
 </div>

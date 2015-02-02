@@ -1,4 +1,17 @@
+import Post from '../models/post';
+
 var Topic = Ember.Object.extend({
+
+  postModels: function() {
+    var postModels = [];
+    var posts = this.get('post_stream.posts');
+    posts.forEach(function(postJSON) {
+      var postModel = Post.create(postJSON);
+      postModels.pushObject(postModel);
+      }
+    );
+    return postModels;
+  }.property('post_stream.posts'),
   // createOnServer: function(complete, error) {
   //   var data = JSON.parse(JSON.stringify(this) );
   //   var create_discette_endpoint = '/drive/admin/discette';

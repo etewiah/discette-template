@@ -1,27 +1,15 @@
-<h3>Current Topic</h3>
-
-
-
 <div class="topic-container">
 
   <div class="row" style="">
     <div class="" style="">
       <ul class="nav nav-tabs site-nav-tabs" style="">
-        <li class="active">
-          {{#link-to 'home' }} Conversations {{/link-to}}
+        <li class="">
+          {{#link-to 'discourse-sites.site' currentSite.slug }} Conversations {{/link-to}}
         </li>
-        <li>
-          {{#link-to 'home.about' }} About {{/link-to}}
+        <li class="active">
+          {{#link-to 'home.about' }} {{ model.title }} {{/link-to}}
         </li>
       </ul>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-11 col-sm-12">
-      <span class='btn pull-right' style="" {{action 'startNewTopic' }} title="">
-        <i class="fa fa-plus"></i>New Conversation
-      </span>
     </div>
   </div>
 
@@ -37,7 +25,7 @@
         <section class="topic-area" id='topic' data-topic-id='{{unbound id}}'>
           <div class='posts-wrapper'>
 
-            {{#each postModel in controller.postModels }} {{post-details  openModalAction='openModal' 
+            {{#each postModel in postModels }} {{post-details  openModalAction='openModal' 
             postModel=postModel }} {{/each}}
 
           </div>
