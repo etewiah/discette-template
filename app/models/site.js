@@ -17,11 +17,11 @@ var Site = Ember.Object.extend({
   //   });
   // },
   getLatestTopics: function() {
-    var host = this.get('host');
-    // "https://meta.discourse.org";
+    // var host = this.get('host');
+    var slug = this.get('slug');
     var apiUrl = "/passthrough/latest.json";
     var data = {
-      host: host
+      slug: slug
     };
     return $.ajax(apiUrl, {
       type: 'GET',

@@ -4,7 +4,7 @@ import Site from '../../models/site';
 export default Ember.Route.extend({
   model: function(params) {
     var siteModel = Site.create({
-      host: "https://talk.birmingham.io"
+      slug: params.slug
     });
     var topics = siteModel.getLatestTopics().then(function(result) {
       return result;
@@ -13,5 +13,10 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('model', model);
+
+    var sites = this.modelFor('discourse-sites');
+    var slug = this.paramsFor('discourse-sites.site').slug;
+    var currentSite = sites.findBy('slug', slug);
+    controller.set('currentSite', currentSite);
   }
 });

@@ -9,7 +9,6 @@ export default Ember.Route.extend({
     return sites;
   },
   setupController: function(controller, model) {
-    debugger;
     controller.set('model', model);
   }
 });

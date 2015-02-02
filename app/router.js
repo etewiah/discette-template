@@ -77,7 +77,7 @@ Router.map(function() {
   this.route("micro-forums");
 
   // this.route("discourse-sites");
-// should below be sold as a directory or a reader???
+  // should below be sold as a directory or a reader???
   this.resource('discourse-sites', {
     path: 'discourse-sites'
   }, function() {
@@ -89,6 +89,13 @@ Router.map(function() {
     }, function() {
       this.route('default', {
         path: '/'
+      });
+      this.resource('discourse-sites.site.topic', {
+        path: '/:id'
+      }, function() {
+        this.route('default', {
+          path: '/'
+        });
       });
     });
   });
@@ -109,21 +116,21 @@ Router.map(function() {
     });
     this.resource("drive-admin.sections", {
       path: "/sections"
-    }, function(){
-      this.route("default",{
+    }, function() {
+      this.route("default", {
         path: "/"
       });
-      this.route("details",{
+      this.route("details", {
         path: "/:id"
       });
     });
     this.resource("drive-admin.discettes", {
       path: "/discettes"
-    }, function(){
-      this.route("default",{
+    }, function() {
+      this.route("default", {
         path: "/"
       });
-      this.route("details",{
+      this.route("details", {
         path: "/:id"
       });
     });
