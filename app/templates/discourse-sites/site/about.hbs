@@ -1,0 +1,21 @@
+<div>
+  <div class="row" style="">
+    <div class="" style="">
+      <ul class="nav nav-tabs site-nav-tabs" style="">
+        <li class="">
+          {{#link-to 'discourse-sites.site' currentSite.slug }} Conversations {{/link-to}}
+        </li>
+        <li class="active">
+          {{#link-to 'discourse-sites.site.about' }} About {{/link-to}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <h3>{{ currentSite.display_name }}</h3>
+
+    <h5>{{ currentSite.description }}</h5>
+
+  </div>
+</div>

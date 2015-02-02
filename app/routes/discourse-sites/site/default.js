@@ -1,7 +1,5 @@
 import Ember from 'ember';
 import Site from '../../../models/site';
-import Topic from '../../../models/topic';
-
 
 export default Ember.Route.extend({
   model: function(params) {
@@ -9,16 +7,14 @@ export default Ember.Route.extend({
     var siteModel = Site.create({
       slug: slug
     });
-    var topic = siteModel.getTopic(params.topic_id).then(function(result) {
+    var topics = siteModel.getLatestTopics().then(function(result) {
       return result;
     }, function(error) {});
-    return topic;
+    return topics;
   },
   setupController: function(controller, model) {
-    var topic = Topic.create(model);
-    controller.set('model', topic);
-    // var currentSite = this.modelFor('discourse-sites.site').currentSite;
-    // debugger;
+    controller.set('model', model);
+
     var sites = this.modelFor('discourse-sites');
     var slug = this.paramsFor('discourse-sites.site').slug;
     var currentSite = sites.findBy('slug', slug);
