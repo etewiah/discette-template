@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     var siteModel = Site.create({
       slug: slug
     });
-    var topics = siteModel.getLatestTopics().then(function(result) {
+    var topics = siteModel.getLatestTopics(params.category_slug).then(function(result) {
       return result;
     }, function(error) {});
     return topics;

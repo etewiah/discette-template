@@ -101,7 +101,7 @@ Router.map(function() {
         });
       });
       this.resource('discourse-sites.site.category', {
-        path: '/c/:cat_id'
+        path: '/c/:category_slug'
       }, function() {
         this.route('default', {
           path: '/'
