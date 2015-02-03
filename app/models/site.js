@@ -1,21 +1,25 @@
 var Site = Ember.Object.extend({
-  // createOnServer: function(complete, error) {
-  //   var data = JSON.parse(JSON.stringify(this) );
-  //   var create_discette_endpoint = '/drive/admin/discette';
-  //   return $.ajax(create_discette_endpoint, {
-  //     type: 'POST',
-  //     dataType: 'json',
-  //     data: data
-  //   }).then(function(result) {
-  //     if (complete) {
-  //       complete(result);
-  //     }
-  //   }, function(result) {
-  //     if (error) {
-  //       error(result);
-  //     }
-  //   });
-  // },
+  createOnServer: function(complete, error) {
+    var host = this.get('host');
+    var data = {
+      host: host
+    };
+    // /discourse_sites/create.json?host=http://chattymaps.com
+    var apiUrl = '/discourse_sites/create';
+    return $.ajax(apiUrl, {
+      type: 'POST',
+      dataType: 'json',
+      data: data
+    }).then(function(result) {
+      if (complete) {
+        complete(result);
+      }
+    }, function(result) {
+      if (error) {
+        error(result);
+      }
+    });
+  },
   getCategories: function() {
     var slug = this.get('slug');
     var apiUrl = "/discourse_sites/" + slug + "/categories.json";
