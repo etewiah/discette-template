@@ -4,6 +4,10 @@ import Topic from '../../../models/topic';
 
 
 export default Ember.Route.extend({
+  titleToken: function(){
+    return this.controller.get('model.title');
+  },
+
   model: function(params) {
     var slug = this.paramsFor('discourse-sites.site').slug;
     var siteModel = Site.create({

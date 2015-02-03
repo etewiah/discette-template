@@ -2,6 +2,9 @@ import Ember from 'ember';
 import Site from '../../../models/site';
 
 export default Ember.Route.extend({
+  titleToken: function() {
+    return this.controller.get('currentSite.display_name');
+  },
   model: function(params) {
     var slug = this.paramsFor('discourse-sites.site').slug;
     var siteModel = Site.create({
@@ -17,9 +20,10 @@ export default Ember.Route.extend({
     var currentSiteSlug = this.paramsFor('discourse-sites.site').slug;
     controller.set('currentSiteSlug', currentSiteSlug);
     var categoryRoot = this.modelFor('discourse-sites.site');
-    // var sites = this.modelFor('discourse-sites');
-    // var slug = this.paramsFor('discourse-sites.site').slug;
-    // var currentSite = sites.findBy('slug', slug);
     controller.set('categoryRoot', categoryRoot);
+
+    var sites = this.modelFor('discourse-sites');
+    var currentSite = sites.findBy('slug', currentSiteSlug);
+    controller.set('currentSite',currentSite);
   }
 });

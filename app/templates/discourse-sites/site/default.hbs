@@ -12,7 +12,12 @@
     </div>
   </div>
 
-
+<div class="row">
+  <div class="col-md-12">
+    <h4>{{ currentSite.display_name }}</h4>
+    <h6>{{ currentSite.description }}</h6>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-10">
     {{#each topic in model.topic_list.topics }}
